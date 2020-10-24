@@ -10,7 +10,7 @@ namespace TomatoTimebox.Models
     {
         public int Id { get; set; }
 
-
+        [Required]
         public int UserProfileId { get; set; }
 
         [Required]
@@ -19,6 +19,7 @@ namespace TomatoTimebox.Models
         [Required]
         public string Description { get; set; }
 
+        [Required]
         public int CategoryId { get; set; }
 
         [Required]
