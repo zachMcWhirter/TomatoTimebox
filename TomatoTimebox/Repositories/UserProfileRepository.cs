@@ -146,6 +146,7 @@ namespace TomatoTimebox.Repositories
                             CreateDateTime = @CreateDateTime,
 		                    ImageLocation = @ImageLocation
                         WHERE Id = @id";
+
                     cmd.Parameters.AddWithValue("@Id", userProfile.Id);
                     cmd.Parameters.AddWithValue("@FirebaseUserId", userProfile.FirebaseUserId);
                     cmd.Parameters.AddWithValue("@DisplayName", userProfile.DisplayName);
@@ -166,15 +167,13 @@ namespace TomatoTimebox.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            DELETE FROM [UserProfile]
-                            WHERE Id = @Id
-                        ";
+                        DELETE FROM [UserProfile]
+                        WHERE Id = @Id";
+                        
                     DbUtils.AddParameter(cmd, "@Id", id);
                     cmd.ExecuteNonQuery();
-
                 }
             }
         }
-
     }
 }
