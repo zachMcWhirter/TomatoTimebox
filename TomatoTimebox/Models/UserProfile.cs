@@ -10,6 +10,9 @@ namespace TomatoTimebox.Models
     {
         public int Id { get; set; }
 
+        [StringLength(28, MinimumLength = 28)]
+        public string FirebaseUserId { get; set; }
+
         [Required]
         public string DisplayName { get; set; }
 
@@ -17,9 +20,9 @@ namespace TomatoTimebox.Models
         public string Email { get; set; }
 
         [Required]
-        public string CreateDateTime { get; set; }
+        public DateTime CreateDateTime { get; set; }
 
-        public DateTime ImageLocation { get; set; }
+        public string ImageLocation { get; set; }
 
     }
 }

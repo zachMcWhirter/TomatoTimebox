@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-
+using TomatoTimebox.Repositories;
 
 namespace TomatoTimebox
 {
@@ -20,7 +20,7 @@ namespace TomatoTimebox
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             //services.AddTransient<IUserTypeRepository, UserTypeRepository>();
             //services.AddTransient<IAccountRepository, AccountRepository>();
             //services.AddTransient<ICampaignRepository, CampaignRepository>();
