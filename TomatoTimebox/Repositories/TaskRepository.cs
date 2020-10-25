@@ -14,14 +14,14 @@ namespace TomatoTimebox.Repositories
         public TaskRepository(IConfiguration config) : base(config) { }
 
         // Helper method that defines the new object and stores it in  
-        // the NewUserProfileFromReader variable.
+        // the NewTaskFromReader variable.
         private Task NewTaskFromReader(SqlDataReader reader)
 
         {
             return new Task()
             {
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                Name = reader.GetString(reader.GetOrdinal("Name")),
+                Name = reader.GetString(reader.GetOrdinal("TaskName")),
                 Description = reader.GetString(reader.GetOrdinal("Description")),
                 IsFinished = reader.GetBoolean(reader.GetOrdinal("IsFinished")),
                 CategoryId = reader.GetInt32(reader.GetOrdinal("CategoryId")),
@@ -33,12 +33,12 @@ namespace TomatoTimebox.Repositories
                 UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
                 UserProfile = new UserProfile()
                 {
-                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                    Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
                     FirebaseUserId = reader.GetString(reader.GetOrdinal("FirebaseUserId")),
                     DisplayName = reader.GetString(reader.GetOrdinal("DisplayName")),
                     Email = reader.GetString(reader.GetOrdinal("Email")),
                     CreateDateTime = reader.GetDateTime(reader.GetOrdinal("CreateDateTime")),
-                    ImageLocation = reader.GetString(reader.GetOrdinal("ImageLocation")),
+                    ImageLocation = DbUtils.GetNullableString(reader, "ImageLocation"),
                 }
             };
         }
