@@ -13,6 +13,8 @@ namespace TomatoTimebox.Repositories
     {
         public UserProfileRepository(IConfiguration config) : base(config) { }
 
+        // Helper method that defines the new object and stores it in  
+        // the NewUserProfileFromReader variable.
         private UserProfile NewUserProfileFromReader(SqlDataReader reader)
         {
             return new UserProfile()

@@ -13,6 +13,8 @@ namespace TomatoTimebox.Models
         [Required]
         public int UserProfileId { get; set; }
 
+        public UserProfile UserProfile { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -21,6 +23,8 @@ namespace TomatoTimebox.Models
 
         [Required]
         public int CategoryId { get; set; }
+
+        public Category Category { get; set; }
 
         [Required]
         public Boolean IsFinished { get; set; }

@@ -21,10 +21,9 @@ namespace TomatoTimebox
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
-            //services.AddTransient<IUserTypeRepository, UserTypeRepository>();
-            //services.AddTransient<IAccountRepository, AccountRepository>();
-            //services.AddTransient<ICampaignRepository, CampaignRepository>();
-            //services.AddTransient<ICampaignStatusRepository, CampaignStatusRepository>();
+            services.AddTransient<ITaskRepository, TaskRepository >();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+
 
 
             // Update Startup.cs to handle Firebase JWT Bearer Tokens here
