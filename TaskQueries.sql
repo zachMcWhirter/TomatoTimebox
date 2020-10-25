@@ -73,3 +73,4 @@ WHERE Id = 7
 -- Delete a task (works)
 DELETE FROM [Task]
 WHERE Id = 7
+
