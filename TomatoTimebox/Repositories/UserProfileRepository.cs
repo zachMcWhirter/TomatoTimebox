@@ -105,8 +105,7 @@ namespace TomatoTimebox.Repositories
                 {
                     cmd.CommandText = @"
                         INSERT INTO [UserProfile] 
-                            (Id, 
-                            FirebaseUserId,
+                            (FirebaseUserId,
                             DisplayName,
                             Email,
                             CreateDateTime,
