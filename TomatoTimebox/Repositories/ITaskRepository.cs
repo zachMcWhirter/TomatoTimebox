@@ -8,6 +8,9 @@ namespace TomatoTimebox.Repositories
     public interface ITaskRepository
     {
         List<Task> GetAllTasks();
-
+        Task GetTaskById(int id);
+        void Add(Task task);
+        void Update(Task task);
+        void Delete(int id);
     }
 }

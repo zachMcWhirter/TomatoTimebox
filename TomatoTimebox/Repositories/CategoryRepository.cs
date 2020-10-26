@@ -137,9 +137,9 @@ namespace TomatoTimebox.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            DELETE FROM Category
-                            WHERE Id = @Id
-                        ";
+                        DELETE FROM Category
+                        WHERE Id = @Id";
+                        
                     cmd.Parameters.AddWithValue("@Id", id);
                     cmd.ExecuteNonQuery();
                 }

@@ -1,5 +1,8 @@
+SELECT * from Task
 
--- get all (tasks)
+
+
+-- get all Tasks (works)
 SELECT  
     t.Id, 
     t.[Name] AS TaskName, 
@@ -41,9 +44,9 @@ SELECT
 FROM Task t
 LEFT JOIN Category c ON t.CategoryId = c.Id
 LEFT JOIN UserProfile u ON t.UserProfileId = u.id
-WHERE t.Id = 2
+WHERE t.Id = 7
 
-
+-- Add a Task (works)
 INSERT INTO [Task] (
     [Name], 
     Description, 
@@ -52,24 +55,28 @@ INSERT INTO [Task] (
     UserProfileId)
 OUTPUT INSERTED.ID
 VALUES (
-    'z', 
-    'z',
-    0,
-    9,
-    3
+    'zzz', 
+    'zzz',
+    1,
+    5,
+    2
     )
 
 
 -- Edit a task (works)
 UPDATE [Task]
 SET 
-    --Name = 'Take a break',
-    --Description = 'Go outside and walk around' 
-    IsFinished = 1 
- --   CategoryId = @CategoryId,
+    Name = 'new task!!',
+    Description = 'something!',
+    IsFinished = 0,
+    CategoryId = 3
 	--UserProfileId = @UserProfileId
 WHERE Id = 7
 
 -- Delete a task (works)
 DELETE FROM [Task]
-WHERE Id = 7
+WHERE Id = 6
+
+INSERT INTO Category (Name)
+                        OUTPUT INSERTED.ID
+                        VALUES ('Cooking')
