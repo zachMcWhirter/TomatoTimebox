@@ -20,10 +20,14 @@ namespace TomatoTimebox
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            // Be sure to add the IRepository after the Base Repository 
+            // like this (public class NoteRepository : BaseRepository, INoteRepository)
+            // or the AddTransient will give you an error
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             services.AddTransient<ITaskRepository, TaskRepository >();
+            services.AddTransient<INoteRepository, NoteRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
-
 
 
             // Update Startup.cs to handle Firebase JWT Bearer Tokens here

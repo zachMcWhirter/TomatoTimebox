@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,68 +9,66 @@ using TomatoTimebox.Models;
 using TomatoTimebox.Repositories;
 
 namespace TomatoTimebox.Controllers
-{   
+{
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class TaskController : ControllerBase
+    public class NoteController : ControllerBase
     {
-        private readonly ITaskRepository _taskRepository;
+        private readonly INoteRepository _noteRepository;
 
-        //services.AddTransient<INoteRepository, NoteRepository>();
-
-
-        public TaskController(ITaskRepository taskRepository)
+        public NoteController(INoteRepository noteRepository)
 
         {
-            _taskRepository = taskRepository;
+            _noteRepository = noteRepository;
         }
 
-        // Get all Tasks
+        // Get all Notes
         // works in:  SQL[x]  Postman[x]
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_taskRepository.GetAllTasks());
+            return Ok(_noteRepository.GetAllNotes());
         }
 
-        // Get a single Task by its Id
+        // Get a single Note by its Id
         // works in:  SQL[x]  Postman[x]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(_taskRepository.GetTaskById(id));
+            return Ok(_noteRepository.GetNoteById(id));
         }
 
-        // Create a Task
+        // Create a Note
         // works in:  SQL[x]  Postman[x]
         [HttpPost]
-        public IActionResult Post(Task task)
+        public IActionResult Post(Note note)
         {
-            _taskRepository.Add(task);
-            return CreatedAtAction("Get", new { id = task.Id }, task);
+            _noteRepository.Add(note);
+            return CreatedAtAction("Get", new { id = note.Id }, note);
         }
 
-        // Edit a Task
+        // Edit a Note
         // works in:  SQL[x]  Postman[x]
         [HttpPut("edit/{id}")]
-        public IActionResult Put(int id, Task task)
+        public IActionResult Put(int id, Note note)
         {
-            if (id != task.Id)
+            if (id != note.Id)
             {
                 return BadRequest();
             }
-            _taskRepository.Update(task);
+            _noteRepository.Update(note);
             return NoContent();
         }
 
-        // Delete a Task
+        // Delete a Note
         // works in:  SQL[x]  Postman[x]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {
-            _taskRepository.Delete(id);
+            _noteRepository.Delete(id);
             return NoContent();
         }
+
     }
 }

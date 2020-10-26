@@ -23,6 +23,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Get all Categories
+        // works in:  SQL[x]  Postman[x]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -30,6 +31,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Get a single Category by its Id
+        // works in:  SQL[x]  Postman[x]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -37,6 +39,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Add a Category
+        // works in:  SQL[x]  Postman[x]
         [HttpPost]
         public IActionResult Post(Category category)
         {
@@ -45,6 +48,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Edit a Category
+        // works in:  SQL[x]  Postman[x]
         [HttpPut("edit/{id}")]
         public IActionResult Put(int id, Category category)
         {
@@ -57,6 +61,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Delete a Category
+        // works in:  SQL[x]  Postman[x]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {

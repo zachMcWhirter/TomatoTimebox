@@ -14,9 +14,12 @@ namespace TomatoTimebox.Models
         public string Content { get; set; }
 
         [Required]
-        public int TaskId { get; set; }
+        public DateTime CreateDateTime { get; set; }
 
         [Required]
-        public DateTime CreateDateTime { get; set; }
+        public int TaskId { get; set; }
+
+        public Task Task { get; set; }
+
     }
 }
