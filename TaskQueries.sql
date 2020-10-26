@@ -44,7 +44,7 @@ SELECT
 FROM Task t
 LEFT JOIN Category c ON t.CategoryId = c.Id
 LEFT JOIN UserProfile u ON t.UserProfileId = u.id
-WHERE t.Id = 3
+WHERE t.Id = 7
 
 -- Add a Task (works)
 INSERT INTO [Task] (
@@ -66,10 +66,10 @@ VALUES (
 -- Edit a task (works)
 UPDATE [Task]
 SET 
-    --Name = 'Take a break',
-    --Description = 'Go outside and walk around' 
-    IsFinished = 1 
- --   CategoryId = @CategoryId,
+    Name = 'new task!!',
+    Description = 'something!',
+    IsFinished = 0,
+    CategoryId = 3
 	--UserProfileId = @UserProfileId
 WHERE Id = 7
 

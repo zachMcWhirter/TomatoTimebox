@@ -11,5 +11,6 @@ namespace TomatoTimebox.Repositories
         Task GetTaskById(int id);
         void Add(Task task);
         void Update(Task task);
+        void Delete(int id);
     }
 }

@@ -57,5 +57,12 @@ namespace TomatoTimebox.Controllers
             return NoContent();
         }
 
+        // Delete a Task
+        [HttpDelete("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _taskRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
