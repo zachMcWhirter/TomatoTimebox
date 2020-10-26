@@ -36,6 +36,9 @@ WHERE Id = @id
 DELETE FROM [UserProfile]
 WHERE Id = 4
 
+SELECT * FROM UserProfile
+
+
 -- get userProfile by Id
 SELECT 
     Id, 
