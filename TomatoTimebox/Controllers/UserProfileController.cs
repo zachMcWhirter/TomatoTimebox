@@ -42,16 +42,14 @@ namespace TomatoTimebox.Controllers
 
 
         // Create a UserProfile
-        // Create method has a bug. It creates the object but it is breaking before
-        // when it is created. It posts with the list after refresh
-        // works in:  SQL[x]  Postman[ ]
+        // works in:  SQL[x]  Postman[x]
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)
         {
             _userProfileRepository.Add(userProfile);
             return CreatedAtAction(
                 nameof(GetUserProfile),
-                new { firebaseUserId = userProfile.FirebaseUserId }, userProfile);
+                new { id = userProfile.Id }, userProfile);
                 
         }
 

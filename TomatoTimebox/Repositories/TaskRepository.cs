@@ -185,6 +185,14 @@ namespace TomatoTimebox.Repositories
                             CategoryId = @CategoryId,
 		                    UserProfileId = @UserProfileId
                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@Id", task.Id);
+                    cmd.Parameters.AddWithValue("@Name", task.Name);
+                    cmd.Parameters.AddWithValue("@Description", task.Description);
+                    cmd.Parameters.AddWithValue("@IsFinished", task.IsFinished);
+                    cmd.Parameters.AddWithValue("@CategoryId", task.CategoryId);
+                    cmd.Parameters.AddWithValue("@UserProfileId", task.UserProfileId);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

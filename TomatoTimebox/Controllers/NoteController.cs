@@ -49,7 +49,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Edit a Note
-        // works in:  SQL[x]  Postman[ ]
+        // works in:  SQL[x]  Postman[x]
         [HttpPut("edit/{id}")]
         public IActionResult Put(int id, Note note)
         {

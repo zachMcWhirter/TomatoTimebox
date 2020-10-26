@@ -194,6 +194,12 @@ namespace TomatoTimebox.Repositories
                             CreateDateTime = @CreateDateTime, 
                             TaskId = @TaskId,
                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@Id", note.Id);
+                    cmd.Parameters.AddWithValue("@Content", note.Content);
+                    cmd.Parameters.AddWithValue("@CreateDateTime", note.CreateDateTime);
+                    cmd.Parameters.AddWithValue("@TaskId", note.TaskId);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
