@@ -16,7 +16,9 @@ namespace TomatoTimebox.Controllers
     {
         private readonly ITaskRepository _taskRepository;
 
-        
+        //services.AddTransient<INoteRepository, NoteRepository>();
+
+
         public TaskController(ITaskRepository taskRepository)
 
         {
@@ -24,6 +26,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Get all Tasks
+        // works in:  SQL[x]  Postman[x]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,13 +34,15 @@ namespace TomatoTimebox.Controllers
         }
 
         // Get a single Task by its Id
+        // works in:  SQL[x]  Postman[x]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             return Ok(_taskRepository.GetTaskById(id));
         }
 
-        // Add a Task
+        // Create a Task
+        // works in:  SQL[x]  Postman[x]
         [HttpPost]
         public IActionResult Post(Task task)
         {
@@ -46,6 +51,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Edit a Task
+        // works in:  SQL[x]  Postman[ ]
         [HttpPut("edit/{id}")]
         public IActionResult Put(int id, Task task)
         {
@@ -58,6 +64,7 @@ namespace TomatoTimebox.Controllers
         }
 
         // Delete a Task
+        // works in:  SQL[x]  Postman[x]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {

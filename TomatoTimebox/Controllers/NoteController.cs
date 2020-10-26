@@ -13,59 +13,60 @@ namespace TomatoTimebox.Controllers
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class NoteController : ControllerBase
     {
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly INoteRepository _noteRepository;
 
-        public CategoryController(ICategoryRepository categoryRepository)
+        public NoteController(INoteRepository noteRepository)
+
         {
-            _categoryRepository = categoryRepository;
+            _noteRepository = noteRepository;
         }
 
-        // Get all Categories
+        // Get all Notes
         // works in:  SQL[x]  Postman[x]
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_categoryRepository.GetAllCategories());
+            return Ok(_noteRepository.GetAllNotes());
         }
 
-        // Get a single Category by its Id
+        // Get a single Note by its Id
         // works in:  SQL[x]  Postman[x]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(_categoryRepository.GetCategoryById(id));
+            return Ok(_noteRepository.GetNoteById(id));
         }
 
-        // Add a Category
+        // Create a Note
         // works in:  SQL[x]  Postman[x]
         [HttpPost]
-        public IActionResult Post(Category category)
+        public IActionResult Post(Note note)
         {
-            _categoryRepository.AddCategory(category);
-            return CreatedAtAction("Get", new { id = category.Id }, category);
+            _noteRepository.Add(note);
+            return CreatedAtAction("Get", new { id = note.Id }, note);
         }
 
-        // Edit a Category
-        // works in:  SQL[x]  Postman[x]
+        // Edit a Note
+        // works in:  SQL[x]  Postman[ ]
         [HttpPut("edit/{id}")]
-        public IActionResult Put(int id, Category category)
+        public IActionResult Put(int id, Note note)
         {
-             if(id != category.Id)
+            if (id != note.Id)
             {
                 return BadRequest();
             }
-            _categoryRepository.EditCategory(category);
+            _noteRepository.Update(note);
             return NoContent();
         }
 
-        // Delete a Category
+        // Delete a Note
         // works in:  SQL[x]  Postman[x]
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {
-            _categoryRepository.DeleteCategory(id);
+            _noteRepository.Delete(id);
             return NoContent();
         }
 
