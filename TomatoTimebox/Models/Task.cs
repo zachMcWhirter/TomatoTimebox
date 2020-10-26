@@ -29,5 +29,7 @@ namespace TomatoTimebox.Models
         [Required]
         public Boolean IsFinished { get; set; }
 
+        public List<Note> Notes { get; set; }
+
     }
 }

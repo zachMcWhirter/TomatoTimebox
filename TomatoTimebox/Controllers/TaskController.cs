@@ -71,5 +71,28 @@ namespace TomatoTimebox.Controllers
             _taskRepository.Delete(id);
             return NoContent();
         }
+
+        // Get all Tasks with their Notes
+        // works in:  SQL[x]  Postman[x]
+        [HttpGet("GetAllWithNotes")]
+        public IActionResult GetWithComments()
+        {
+            var tasks = _taskRepository.GetAllTasksWithNotes();
+            return Ok(tasks);
+        }
+
+        // Get a single Task with all of its Notes
+        // works in:  SQL[x]  Postman[x]
+        [HttpGet("GetTaskWithNotes/{id}")]
+        public IActionResult GetWithComments(int id)
+        {
+            var task = _taskRepository.GetTaskByIdWithNotes(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+            return Ok(task);
+        }
+
     }
 }

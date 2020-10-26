@@ -80,3 +80,61 @@ WHERE Id = 6
 INSERT INTO Category (Name)
                         OUTPUT INSERTED.ID
                         VALUES ('Cooking')
+
+-- Get all Tasks with their Notes (works)
+SELECT
+    t.Id,
+    t.[Name] AS TaskName,
+    t.Description,
+    t.IsFinished,
+    t.CategoryId,
+    t.UserProfileId,
+
+    c.[Name] AS CategoryName,
+
+    u.FirebaseUserId,
+    u.DisplayName,
+    u.Email,
+    u.CreateDateTime,
+    u.ImageLocation,
+
+    n.Id AS NoteId,
+    n.Content,
+    n.CreateDateTime,
+    n.TaskId AS TaskIdForNote
+
+FROM Task t
+LEFT JOIN Category c ON t.CategoryId = c.Id
+LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+LEFT JOIN Note n ON n.TaskId = t.Id
+ORDER BY n.CreateDateTime DESC
+
+
+-- Get all Tasks with their Notes ()
+SELECT
+    t.Id,
+    t.[Name] AS TaskName,
+    t.Description,
+    t.IsFinished,
+    t.CategoryId,
+    t.UserProfileId,
+
+    c.[Name] AS CategoryName,
+
+    u.FirebaseUserId,
+    u.DisplayName,
+    u.Email,
+    u.CreateDateTime,
+    u.ImageLocation,
+
+    n.Id AS NoteId,
+    n.Content,
+    n.CreateDateTime,
+    n.TaskId AS TaskIdForNote
+
+FROM Task t
+LEFT JOIN Category c ON t.CategoryId = c.Id
+LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+LEFT JOIN Note n ON n.TaskId = t.Id
+WHERE t.Id = 1 
+ORDER BY n.CreateDateTime DESC
