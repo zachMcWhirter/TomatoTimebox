@@ -33,11 +33,18 @@ namespace TomatoTimebox.Controllers
 
         // Get a single UserProfile by its Id
         // works in:  SQL[x]  Postman[x]
-        [HttpGet("{id}")]
+        [HttpGet("user/{id}")]
         public IActionResult GetUserProfile(int id)
 
         {
             return Ok(_userProfileRepository.GetUserProfileById(id));
+        }
+
+        // Get FirebaseId String
+        [HttpGet("{firebaseUserId}")]
+        public IActionResult GetUserProfile(string firebaseUserId)
+        {
+            return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
         }
 
 
@@ -46,6 +53,7 @@ namespace TomatoTimebox.Controllers
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)
         {
+            userProfile.CreateDateTime = DateTime.Now;
             _userProfileRepository.Add(userProfile);
             return CreatedAtAction(
                 nameof(GetUserProfile),
