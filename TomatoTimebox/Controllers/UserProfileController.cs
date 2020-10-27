@@ -10,7 +10,7 @@ using TomatoTimebox.Repositories;
 
 namespace TomatoTimebox.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase
@@ -40,11 +40,25 @@ namespace TomatoTimebox.Controllers
             return Ok(_userProfileRepository.GetUserProfileById(id));
         }
 
+        //// Get FirebaseId String
+        //// works in:  SQL[x]  Postman[ ]
+        //[HttpGet("{firebaseUserId}")]
+        //public IActionResult GetUserProfile(string firebaseUserId)
+        //{
+        //    return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
+        //}
+
         // Get FirebaseId String
+        // works in:  SQL[x]  Postman[ ]
         [HttpGet("{firebaseUserId}")]
-        public IActionResult GetUserProfile(string firebaseUserId)
+        public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
-            return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
+            var userProfile = _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
+            return Ok(userProfile);
         }
 
 

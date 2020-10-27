@@ -78,7 +78,7 @@ namespace TomatoTimebox.Repositories
                             CreateDateTime,
                             ImageLocation
                         FROM UserProfile 
-                        WHERE FirebaseUserId = @FirebaseuserId";
+                        WHERE FirebaseUserId = @FirebaseUserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 

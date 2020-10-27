@@ -23,13 +23,26 @@ export default function Header() {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
+
                         {isLoggedIn &&
                             <>
-                                
+
+                                <NavItem>
+                                    <NavLink tag={RRNavLink} to="/tasks">Task List</NavLink>
+                                </NavItem>
+
+
+                            </>
+                        }
+                        {isLoggedIn &&
+                            <>
+
                                 <NavItem>
                                     <a aria-current="page" className="nav-link"
                                         style={{ cursor: "pointer" }} onClick={logout}>Logout</a>
                                 </NavItem>
+
+
                             </>
                         }
                         {!isLoggedIn &&
@@ -43,7 +56,7 @@ export default function Header() {
                             </>
                         }
                     </Nav>
-                    
+
                 </Collapse>
             </Navbar>
         </div>

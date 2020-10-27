@@ -18,6 +18,8 @@ export function UserProfileProvider(props) {
         });
     }, []);
 
+    const getToken = () => firebase.auth().currentUser.getIdToken();
+
     const login = (email, pw) => {
         return firebase.auth().signInWithEmailAndPassword(email, pw)
             .then((signInResponse) => getUserProfile(signInResponse.user.uid))
@@ -44,7 +46,7 @@ export function UserProfileProvider(props) {
             });
     };
 
-    const getToken = () => firebase.auth().currentUser.getIdToken();
+
 
     const getUserProfile = (firebaseUserId) => {
         return getToken().then((token) =>
@@ -58,13 +60,13 @@ export function UserProfileProvider(props) {
 
     const getUserId = (id) => {
         return getToken().then((token) =>
-          fetch(`${apiUrl}/user/${id}`, {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }).then(resp => resp.json()));
-      };
+            fetch(`${apiUrl}/user/${id}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(resp => resp.json()));
+    };
 
     const saveUser = (userProfile) => {
         return getToken().then((token) =>
