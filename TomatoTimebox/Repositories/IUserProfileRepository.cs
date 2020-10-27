@@ -16,5 +16,7 @@ namespace TomatoTimebox.Repositories
         UserProfile GetUserProfileById(int id);
 
         void Update(UserProfile userProfile);
+
+        UserProfile GetByFirebaseUserId(string firebaseUserId);
     }
 }
