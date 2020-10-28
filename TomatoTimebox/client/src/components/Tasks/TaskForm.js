@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-// import { CategoryContext } from "../../providers/CategoryProvider";
+import { CategoryContext } from "../../providers/CategoryProvider";
 import { TaskContext } from "../../providers/TaskProvider";
 import { useHistory, Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function TaskForm() {
     const history = useHistory();
-    // const { categories, getAllCategories } = useContext(CategoryContext);
+    const { categories, getAllCategories } = useContext(CategoryContext);
     const { addTask } = useContext(TaskContext);
-    // const [categoryId, setCategoryId] = useState();
+    const [categoryId, setCategoryId] = useState();
 
     const sessionUser = JSON.parse(sessionStorage.getItem("userProfile")).id;
 
@@ -36,25 +36,21 @@ export default function TaskForm() {
         } else {
             setIsLoading(true);
         }
-
+        const parsedCat = parseInt(categoryId);
+        task.categoryId = parsedCat;
         addTask(task)
             .then((p) => {
                 history.push(`/tasks`)
             })
+    };
+
+    const handleChange = (e) => {
+        setCategoryId(e.target.value);
     }
 
-    //     const parsedCat = parseInt(categoryId);
-    //     task.categoryId = parsedCat;
-    //     
-    // };
-
-    // const handleChange = (e) => {
-    //     setCategoryId(e.target.value);
-    // }
-
-    // useEffect(() => {
-    //     getAllCategories();
-    // }, [])
+    useEffect(() => {
+        getAllCategories();
+    }, [])
 
     return (
         <>
@@ -72,7 +68,7 @@ export default function TaskForm() {
                         />
                         <Label for="category">Category</Label>
                         <br />
-                        {/* <select className="userEditDropdown" onChange={handleChange}>
+                        <select className="userEditDropdown" onChange={handleChange}>
                             {categories.map(category =>
                                 category.id === task.categoryId ?
                                     <option selected value={category.id}>
@@ -82,7 +78,7 @@ export default function TaskForm() {
                                         {category.name}
                                     </option>
                             )}
-                        </select> */}
+                        </select>
                         <br />
                         <Label for="description">Description</Label>
                         <Input

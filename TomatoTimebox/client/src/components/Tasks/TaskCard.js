@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardBody, Button } from "reactstrap";
 import { Link, useHistory } from "react-router-dom"
+import { TaskContext } from "../../providers/TaskProvider";
 
 export default function TaskCard({ task }) {
     const sessionUser = JSON.parse(sessionStorage.getItem("userProfile"));
     const history = useHistory();
-    console.log(task)
-    console.log("task.isFinished", task.isFinished)
-
+    
     return (
 
         <Card className="m-4">
