@@ -4,7 +4,6 @@ import { UserProfileContext } from "./UserProfileProvider";
 export const TaskContext = React.createContext();
 
 export const TaskProvider = (props) => {
-    // const apiUrl = "/api/task";
     const { getToken } = useContext(UserProfileContext);
 
     const [tasks, setTasks] = useState([]);
@@ -64,6 +63,20 @@ export const TaskProvider = (props) => {
             }))
     };
 
+    // Edit a Task
+    const updateTask = (id, task) => {
+        return getToken().then((token) =>
+            fetch(`/api/task/edit/${id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(task)
+            }))
+    };
+
+    // Delete a Task
     const deleteTask = (id) =>
         getToken().then((token) =>
             fetch(`/api/task/delete/${id}`, {
@@ -77,7 +90,7 @@ export const TaskProvider = (props) => {
     return (
         <TaskContext.Provider value={{
             tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId,
-            getTaskById, addTask, deleteTask
+            getTaskById, addTask, deleteTask, updateTask
 
         }}>
             {props.children}
