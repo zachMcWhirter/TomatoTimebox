@@ -64,10 +64,20 @@ export const TaskProvider = (props) => {
             }))
     };
 
+    const deleteTask = (id) =>
+        getToken().then((token) =>
+            fetch(`/api/task/delete/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+            }))
+
     return (
         <TaskContext.Provider value={{
             tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId,
-            getTaskById, addTask
+            getTaskById, addTask, deleteTask
 
         }}>
             {props.children}
