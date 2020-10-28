@@ -139,6 +139,69 @@ namespace TomatoTimebox.Repositories
             }
         }
 
+        //// Get all Tasks for a single user by UserProfileId
+        //public UserProfile GetAllTasksForUser(int id)
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"
+        //                SELECT
+        //                    t.Id,
+        //                    t.[Name] AS TaskName,
+        //                    t.Description,
+        //                    t.IsFinished,
+        //                    t.CategoryId,
+        //                    t.UserProfileId,
+
+        //                    c.[Name] AS CategoryName,
+
+        //                    u.FirebaseUserId,
+        //                    u.DisplayName,
+        //                    u.Email,
+        //                    u.CreateDateTime,
+        //                    u.ImageLocation
+
+        //                FROM Task t
+        //                LEFT JOIN Category c ON t.CategoryId = c.Id
+        //                LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+        //                WHERE u.id = @Id";
+
+        //            DbUtils.AddParameter(cmd, "@Id", id);
+
+        //            var reader = cmd.ExecuteReader();
+
+        //            UserProfile userProfile = null;
+        //            while (reader.Read())
+        //            {
+        //                if (userProfile == null)
+        //                {
+        //                    userProfile = NewUserProfileFromReader(reader);
+        //                    {
+        //                        userProfile.Tasks = new List<Task>();                               
+        //                    };
+        //                }
+        //                if (DbUtils.IsNotDbNull(reader, "TaskId"))
+        //                {
+        //                    userProfile.Tasks.Add(new Task()
+        //                    {
+        //                        Id = DbUtils.GetInt(reader, "NoteId"),
+        //                        TaskId = userProfile.Id,
+        //                        Name = DbUtils.GetString(reader, "Name"),
+        //                        Description = DbUtils.GetString(reader, "Description"),
+        //                        IsFinished = DbUtils.Get(reader, "IsFinished")
+        //                    });
+        //                }
+        //            }
+        //            reader.Close();
+
+        //            return userProfile;
+        //        }
+        //    }
+        //}
+
         // Create a new UserProfile
         public void Add(UserProfile userProfile)
         {

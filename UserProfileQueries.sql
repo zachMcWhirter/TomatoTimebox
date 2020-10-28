@@ -50,6 +50,8 @@ SELECT
 FROM UserProfile
 WHERE Id = 2
 
+
+
 SELECT 
                             Id, 
                             FirebaseUserId, 

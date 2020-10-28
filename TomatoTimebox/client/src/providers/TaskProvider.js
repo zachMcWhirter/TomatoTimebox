@@ -21,9 +21,21 @@ export const TaskProvider = (props) => {
                 .then(setTasks));
     };
 
+    // Get All Tasks for one user by UserProfileId
+    const getAllTasksForSingleUserId = (userProfileId) => {
+        getToken().then((token) =>
+            fetch(`/api/task/GetAllTasksForSingleUserId/${userProfileId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(resp => resp.json())
+                .then(setTasks));
+    };
+
     return (
         <TaskContext.Provider value={{
-            tasks, setTasks, task, setTask, getAllTasks,
+            tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId
 
         }}>
             {props.children}

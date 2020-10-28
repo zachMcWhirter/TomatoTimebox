@@ -268,7 +268,8 @@ namespace TomatoTimebox.Repositories
             };
         }
 
-        public Task GetTaskByIdWithNotes(int id)
+        // -- Get all the notes for single Task By TaskId
+        public Task GetAllNotesForSingleTaskId(int id)
         {
             using (var conn = Connection)
             {
@@ -331,6 +332,129 @@ namespace TomatoTimebox.Repositories
 
                     }
                    
+                    reader.Close();
+
+                    return task;
+                }
+            }
+        }
+
+        // Get all Tasks For a single user by UserProfileId
+        public List<Task> GetAllTasksForSingleUserId(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT
+                            t.Id,
+                            t.[Name] AS TaskName,
+                            t.Description,
+                            t.IsFinished,
+                            t.CategoryId,
+                            t.UserProfileId,
+
+                            c.[Name] AS CategoryName
+
+                        FROM [Task] t
+                        LEFT JOIN Category c ON t.CategoryId = c.Id
+                        WHERE t.UserProfileId = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    var reader = cmd.ExecuteReader();
+
+                    var tasks = new List<Task>();
+                    while (reader.Read())
+                    {
+                        tasks.Add(new Task()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Name = DbUtils.GetString(reader, "TaskName"),
+                            Description = DbUtils.GetString(reader, "Description"),
+                            IsFinished = reader.GetBoolean(reader.GetOrdinal("IsFinished")),
+                            UserProfileId = DbUtils.GetInt(reader, "UserProfileId"),
+                            CategoryId = DbUtils.GetInt(reader, "CategoryId"),
+                            Category = new Category()
+                            {
+                                Id = DbUtils.GetInt(reader, "CategoryId"),
+                                Name = DbUtils.GetString(reader, "CategoryName"),
+                            },
+                        });
+                    };
+
+                    reader.Close();
+
+                    return tasks;
+                }              
+            }
+        }
+
+        public Task GetAllTasksWithNotesForSingleUserId(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT
+                            t.Id,
+                            t.[Name] AS TaskName,
+                            t.Description,
+                            t.IsFinished,
+                            t.CategoryId,
+                            t.UserProfileId,
+
+                            c.[Name] AS CategoryName,
+
+                            u.FirebaseUserId,
+                            u.DisplayName,
+                            u.Email,
+                            u.CreateDateTime,
+                            u.ImageLocation,
+
+                            n.Id AS NoteId,
+                            n.Content,
+                            n.CreateDateTime,
+                            n.TaskId AS TaskIdForNote
+
+                        FROM Task t
+                        LEFT JOIN Category c ON t.CategoryId = c.Id
+                        LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+                        LEFT JOIN Note n ON n.TaskId = t.Id
+                        WHERE u.id = @Id
+                        ORDER BY n.CreateDateTime DESC";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    var reader = cmd.ExecuteReader();
+
+                    Task task = null;
+                    while (reader.Read())
+                    {
+                        if (task == null)
+                        {
+                            task = NewTaskFromReader(reader);
+                            {
+                                task.Notes = new List<Note>();
+                            };
+                        }
+                        if (DbUtils.IsNotDbNull(reader, "NoteId"))
+                        {
+                            task.Notes.Add(new Note()
+                            {
+                                Id = DbUtils.GetInt(reader, "NoteId"),
+                                Content = DbUtils.GetString(reader, "Content"),
+                                TaskId = task.Id,
+                                CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime")
+                            });
+                        }
+
+                    }
+
                     reader.Close();
 
                     return task;

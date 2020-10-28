@@ -19,6 +19,10 @@ namespace TomatoTimebox.Repositories
 
         List<Task> GetAllTasksWithNotes();
 
-        Task GetTaskByIdWithNotes(int id);
+        Task GetAllNotesForSingleTaskId(int id);
+
+        List<Task> GetAllTasksForSingleUserId(int id);
+
+        Task GetAllTasksWithNotesForSingleUserId(int id);
     }
 }
