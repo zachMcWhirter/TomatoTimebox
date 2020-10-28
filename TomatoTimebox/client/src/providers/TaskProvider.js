@@ -10,6 +10,7 @@ export const TaskProvider = (props) => {
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState({});
 
+    //Get all Tasks for all Users (for testing purposes)
     const getAllTasks = () => {
         getToken().then((token) =>
             fetch("/api/task", {
@@ -33,9 +34,40 @@ export const TaskProvider = (props) => {
                 .then(setTasks));
     };
 
+    // Get a single task by its id
+    const getTaskById = (taskId) => {
+        getToken().then((token) =>
+            fetch(`/api/task/${taskId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })).then((resp) => resp.json())
+            .then(setTask);
+    };
+
+    // Create a new task
+    const addTask = (task) => {
+        return getToken().then((token) =>
+            fetch("/api/task", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(task)
+            }).then(resp => {
+                if (resp.ok) {
+                    return resp.json();
+                }
+                throw new Error("Unauthorized");
+            }))
+    };
+
     return (
         <TaskContext.Provider value={{
-            tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId
+            tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId,
+            getTaskById, addTask
 
         }}>
             {props.children}

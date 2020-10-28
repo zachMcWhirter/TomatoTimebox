@@ -5,7 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Hello from "./Hello";
 import TaskList from "../components/Tasks/TaskList"
-
+import TaskForm from "../components/Tasks/TaskForm"
 
 
 export default function ApplicationViews() {
@@ -20,6 +20,10 @@ export default function ApplicationViews() {
 
                 <Route path="/tasks" exact>
                     {isLoggedIn ? <TaskList /> : <Redirect to="/login" />}
+                </Route>
+
+                <Route path="/tasks/add" exact>
+                    {isLoggedIn ? <TaskForm /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/login">
