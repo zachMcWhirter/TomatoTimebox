@@ -9,7 +9,7 @@ using TomatoTimebox.Repositories;
 
 namespace TomatoTimebox.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TaskController : ControllerBase
