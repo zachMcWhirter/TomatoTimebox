@@ -18,6 +18,9 @@ export default function TaskCard({ task }) {
                 <Link to={`/tasks/details/${task.id}`}>
                     <button className="tag-btn">Details</button>
                 </Link>
+                <Link to={`/tasks/edit/${task.id}`}>
+                    <button className="tag-btn">Edit</button>
+                </Link>
                 <Link to={`/tasks/delete/${task.id}`}>
                     <button className="tag-btn">Delete</button>
                 </Link>
