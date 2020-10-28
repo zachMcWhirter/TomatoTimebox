@@ -8,7 +8,7 @@ using TomatoTimebox.Models;
 using TomatoTimebox.Repositories;
 
 namespace TomatoTimebox.Controllers
-{   
+{
     //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -81,12 +81,35 @@ namespace TomatoTimebox.Controllers
             return Ok(tasks);
         }
 
-        // Get a single Task with all of its Notes
+        // Get all the notes for single Task By TaskId
         // works in:  SQL[x]  Postman[x]
         [HttpGet("GetTaskWithNotes/{id}")]
-        public IActionResult GetWithComments(int id)
+        public IActionResult GetAllNotesForSingleTaskId(int id)
         {
-            var task = _taskRepository.GetTaskByIdWithNotes(id);
+            var task = _taskRepository.GetAllNotesForSingleTaskId(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+            return Ok(task);
+        }
+
+        // Get all Tasks For a single user by UserProfileId
+        [HttpGet("GetAllTasksForSingleUserId/{id}")]
+        public IActionResult GetAllTasksForSingleUserId(int id)
+        {
+            var task = _taskRepository.GetAllTasksForSingleUserId(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+            return Ok(task);
+        }
+
+        [HttpGet("GetAllTasksWithNotesForSingleUserId/{id}")]
+        public IActionResult GetAllTasksWithNotesForSingleUserId(int id)
+        {
+            var task = _taskRepository.GetAllTasksWithNotesForSingleUserId(id);
             if (task == null)
             {
                 return NotFound();

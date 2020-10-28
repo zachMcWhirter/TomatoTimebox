@@ -49,3 +49,15 @@ SELECT
     ImageLocation
 FROM UserProfile
 WHERE Id = 2
+
+
+
+SELECT 
+                            Id, 
+                            FirebaseUserId, 
+                            DisplayName,
+                            Email, 
+                            CreateDateTime,
+                            ImageLocation
+                        FROM UserProfile 
+                        WHERE FirebaseUserId ='9AKGqq9p0iU8PEWj0kWnXvbCeXn1'

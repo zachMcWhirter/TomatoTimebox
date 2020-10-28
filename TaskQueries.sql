@@ -110,7 +110,8 @@ LEFT JOIN Note n ON n.TaskId = t.Id
 ORDER BY n.CreateDateTime DESC
 
 
--- Get all Tasks with their Notes ()
+
+-- Get all the notes for single Task By TaskId()
 SELECT
     t.Id,
     t.[Name] AS TaskName,
@@ -136,5 +137,75 @@ FROM Task t
 LEFT JOIN Category c ON t.CategoryId = c.Id
 LEFT JOIN UserProfile u ON t.UserProfileId = u.id
 LEFT JOIN Note n ON n.TaskId = t.Id
-WHERE t.Id = 1 
+WHERE t.Id = 1
+ORDER BY n.CreateDateTime DESC
+
+
+SELECT * from Task
+
+-- Get all Tasks For a single user by UserProfileId
+SELECT
+    t.Id,
+    t.[Name] AS TaskName,
+    t.Description,
+    t.IsFinished,
+    t.CategoryId,
+    t.UserProfileId,
+
+    c.[Name] AS CategoryName,
+
+    u.FirebaseUserId,
+    u.DisplayName,
+    u.Email,
+    u.CreateDateTime,
+    u.ImageLocation
+
+FROM Task t
+LEFT JOIN Category c ON t.CategoryId = c.Id
+LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+WHERE u.id = 1
+
+-- Get all Tasks For a single user by UserProfileId Again
+SELECT
+    t.Id,
+    t.[Name] AS TaskName,
+    t.Description,
+    t.IsFinished,
+    t.CategoryId,
+    t.UserProfileId,
+
+    c.[Name] AS CategoryName
+
+FROM Task t
+LEFT JOIN Category c ON t.CategoryId = c.Id
+WHERE t.UserProfileId = 1
+
+
+-- Get all Tasks with their Notes For a single user by UserProfileId()
+SELECT
+    t.Id,
+    t.[Name] AS TaskName,
+    t.Description,
+    t.IsFinished,
+    t.CategoryId,
+    t.UserProfileId,
+
+    c.[Name] AS CategoryName,
+
+    u.FirebaseUserId,
+    u.DisplayName,
+    u.Email,
+    u.CreateDateTime,
+    u.ImageLocation,
+
+    n.Id AS NoteId,
+    n.Content,
+    n.CreateDateTime AS CreateDateTimeForNote,
+    n.TaskId AS TaskIdForNote
+
+FROM Task t
+LEFT JOIN Category c ON t.CategoryId = c.Id
+LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+LEFT JOIN Note n ON n.TaskId = t.Id
+WHERE t.UserProfileId = 1
 ORDER BY n.CreateDateTime DESC

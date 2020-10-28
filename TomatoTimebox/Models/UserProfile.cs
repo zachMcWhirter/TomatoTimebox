@@ -24,5 +24,6 @@ namespace TomatoTimebox.Models
 
         public string ImageLocation { get; set; }
 
+        public List<Task> Tasks { get; set; }
     }
 }
