@@ -76,6 +76,18 @@ export const TaskProvider = (props) => {
             }))
     };
 
+    // Toggle IsFinished Checkbox
+    const toggleIsFinished = (id, isFinished) => {
+        return getToken().then((token) =>
+            fetch(`/api/task/toggle/${id}?IsFinished=${isFinished}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+            }))
+    };
+
     // Delete a Task
     const deleteTask = (id) =>
         getToken().then((token) =>
@@ -90,7 +102,7 @@ export const TaskProvider = (props) => {
     return (
         <TaskContext.Provider value={{
             tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId,
-            getTaskById, addTask, deleteTask, updateTask
+            getTaskById, addTask, deleteTask, updateTask, toggleIsFinished
 
         }}>
             {props.children}

@@ -15,10 +15,9 @@ export default function TaskForm() {
     const [task, setTask] = useState({
         name: "",
         description: "",
-        categoryId: 2,
+        categoryId: "",
         isFinished: false,
         userProfileId: sessionUser
-
     });
 
     const [isLoading, setIsLoading] = useState(false);
@@ -66,8 +65,8 @@ export default function TaskForm() {
                             placeholder="Name"
                             value={task.name}
                         />
-                        <Label for="category">Category</Label>
                         <br />
+                        <Label for="category">Category</Label>
                         <select className="userEditDropdown" onChange={handleChange}>
                             {categories.map(category =>
                                 category.id === task.categoryId ?
@@ -90,6 +89,7 @@ export default function TaskForm() {
                             value={task.description}
                         />
                         <br />
+                        <label></label>
                         <div>
                             <Button
                                 className="newPostSubmitButton"
@@ -104,5 +104,4 @@ export default function TaskForm() {
             </Form>
         </>
     )
-
 }

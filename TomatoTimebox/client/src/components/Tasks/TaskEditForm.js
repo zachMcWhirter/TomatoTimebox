@@ -7,7 +7,11 @@ import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstra
 export default function TaskEditForm() {
     const { getTaskById, updateTask, task } = useContext(TaskContext);
     // const { categories, getAllCategories } = useContext(CategoryContext);
-    // const [ categoryId, setCategoryId ] = useState();
+    // const [categoryId, setCategoryId] = useState();
+
+    //UseParams pulls in the id information from applications view 
+    const { id } = useParams();
+    const history = useHistory();
 
     const [editedTask, setEditedTask] = useState({
         name: "",
@@ -16,10 +20,6 @@ export default function TaskEditForm() {
         isFinished: task.isFinished,
         userProfileId: task.userProfileId
     });
-
-    //UseParams pulls in the id information from applications view 
-    const { id } = useParams();
-    const history = useHistory();
 
     // const handleChange = (e) => {
     //     setCategoryId(e.target.value);
@@ -41,7 +41,7 @@ export default function TaskEditForm() {
         updateTask({
             name: editedTask.name,
             description: editedTask.description,
-            isFinished: editedTask.isFinished,
+
             id: task.id
         })
 
@@ -116,20 +116,20 @@ export default function TaskEditForm() {
                                     />
                                 </FormGroup>
                                 {/* <FormGroup>
-                                <Label for="category">Category</Label>
-                                <br />
-                                <select className="userEditDropdown" onChange={handleChange}>
-                                    {categories.map(category =>
-                                        category.id === post.categoryId ?
-                                            <option selected value={category.id}>
-                                                {category.name}
-                                            </option> :
-                                            <option value={category.id}>
-                                                {category.name}
-                                            </option>
-                                    )}
-                                </select>
-                            </FormGroup> */}
+                                    <Label for="category">Category</Label>
+                                    <br />
+                                    <select className="userEditDropdown" onChange={handleChange}>
+                                        {categories.map(category =>
+                                            category.id === post.categoryId ?
+                                                <option selected value={category.id}>
+                                                    {category.name}
+                                                </option> :
+                                                <option value={category.id}>
+                                                    {category.name}
+                                                </option>
+                                        )}
+                                    </select>
+                                </FormGroup> */}
 
                             </Form>
                             <Button type="button" color="success" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;

@@ -197,6 +197,27 @@ namespace TomatoTimebox.Repositories
             }
         }
 
+        // Edit a CheckBox
+        public void Toggle(int id, bool isFinished)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE [Task]
+                        SET 
+                            IsFinished = @IsFinished
+                        WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@IsFinished", isFinished);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         // Delete a Task
         public void Delete(int id)
         {

@@ -209,3 +209,20 @@ LEFT JOIN UserProfile u ON t.UserProfileId = u.id
 LEFT JOIN Note n ON n.TaskId = t.Id
 WHERE t.UserProfileId = 1
 ORDER BY n.CreateDateTime DESC
+
+UPDATE [Task]
+SET 
+    
+    IsFinished = 'true'
+WHERE Id = 1
+
+--WHERE Id = 1
+
+
+UPDATE [Task]
+SET IsFinished = 1
+WHERE Id = 2
+
+
+
+SELECT * from Task
