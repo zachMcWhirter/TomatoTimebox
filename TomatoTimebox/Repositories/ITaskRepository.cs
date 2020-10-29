@@ -24,5 +24,7 @@ namespace TomatoTimebox.Repositories
         List<Task> GetAllTasksForSingleUserId(int id);
 
         Task GetAllTasksWithNotesForSingleUserId(int id);
+
+        void Toggle(int id, bool isFinished);
     }
 }

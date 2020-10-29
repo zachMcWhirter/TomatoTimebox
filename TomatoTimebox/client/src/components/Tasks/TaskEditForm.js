@@ -1,13 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
-// import { CategoryContext } from "../../providers/CategoryProvider";
+import { CategoryContext } from "../../providers/CategoryProvider";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function TaskEditForm() {
     const { getTaskById, updateTask, task } = useContext(TaskContext);
-    // const { categories, getAllCategories } = useContext(CategoryContext);
-    // const [ categoryId, setCategoryId ] = useState();
+    const { categories, getAllCategories } = useContext(CategoryContext);
+    const [categoryId, setCategoryId] = useState();
+
+    //UseParams pulls in the id information from applications view 
+    const { id } = useParams();
+    const history = useHistory();
 
     const [editedTask, setEditedTask] = useState({
         name: "",
@@ -17,21 +21,17 @@ export default function TaskEditForm() {
         userProfileId: task.userProfileId
     });
 
-    //UseParams pulls in the id information from applications view 
-    const { id } = useParams();
-    const history = useHistory();
-
-    // const handleChange = (e) => {
-    //     setCategoryId(e.target.value);
-    // }
+    const handleChange = (e) => {
+        setCategoryId(e.target.value);
+    }
 
     useEffect(() => {
         getTaskById(parseInt(id));
     }, [])
 
-    // useEffect(() => {
-    //     getAllCategories();
-    // }, [])
+    useEffect(() => {
+        getAllCategories();
+    }, [])
 
     useEffect(() => {
         setEditedTask(task)
@@ -41,17 +41,17 @@ export default function TaskEditForm() {
         updateTask({
             name: editedTask.name,
             description: editedTask.description,
-            isFinished: editedTask.isFinished,
+
             id: task.id
         })
 
 
-        // const parsedCat = parseInt(categoryId);
-        // editedPost.categoryId = parsedCat;
+        const parsedCat = parseInt(categoryId);
+        editedTask.categoryId = parsedCat;
 
-        // if (!editedPost.categoryId) {
-        //     editedPost.categoryId = post.categoryId;
-        // }
+        if (!editedTask.categoryId) {
+            editedTask.categoryId = task.categoryId;
+        }
 
         updateTask(editedTask.id, editedTask)
             .then(() => {
@@ -115,21 +115,21 @@ export default function TaskEditForm() {
                                         onChange={handleFieldChange}
                                     />
                                 </FormGroup>
-                                {/* <FormGroup>
-                                <Label for="category">Category</Label>
-                                <br />
-                                <select className="userEditDropdown" onChange={handleChange}>
-                                    {categories.map(category =>
-                                        category.id === post.categoryId ?
-                                            <option selected value={category.id}>
-                                                {category.name}
-                                            </option> :
-                                            <option value={category.id}>
-                                                {category.name}
-                                            </option>
-                                    )}
-                                </select>
-                            </FormGroup> */}
+                                <FormGroup>
+                                    <Label for="category">Category</Label>
+                                    <br />
+                                    <select className="userEditDropdown" onChange={handleChange}>
+                                        {categories.map(category =>
+                                            category.id === task.categoryId ?
+                                                <option selected value={category.id}>
+                                                    {category.name}
+                                                </option> :
+                                                <option value={category.id}>
+                                                    {category.name}
+                                                </option>
+                                        )}
+                                    </select>
+                                </FormGroup>
 
                             </Form>
                             <Button type="button" color="success" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;

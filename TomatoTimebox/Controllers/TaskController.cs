@@ -62,6 +62,13 @@ namespace TomatoTimebox.Controllers
             _taskRepository.Update(task);
             return NoContent();
         }
+        // Toggle isFinished Checkbox
+        [HttpPut("toggle/{id}")]
+        public IActionResult Toggle(int id, bool isFinished)
+        {
+            _taskRepository.Toggle(id, isFinished);
+            return NoContent();
+        }
 
         // Delete a Task
         // works in:  SQL[x]  Postman[x]
