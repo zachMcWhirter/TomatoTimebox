@@ -13,18 +13,21 @@ export default function TaskList() {
     }, []);
 
     return (
-        <section>
-            <h1>
-                {(JSON.parse(userProfile).displayName)}'s Task List
-            </h1>
-            <div>
-                {tasks.map(t =>
-                    <TaskCard key={t.id} task={t} />
-                )}
-            </div>
-            <p>
-                <Link class="btn-red" to="/tasks/add">New Task</Link>
-            </p>
-        </section>
+        <div className="post-container">
+
+            <section >
+                <h1>
+                    {(JSON.parse(userProfile).displayName)}'s Task List
+                </h1>
+                <p>
+                    <Link class="btn-red" to="/tasks/add">New Task</Link>
+                </p>
+                <div>
+                    {tasks.map(t =>
+                        <TaskCard key={t.id} task={t} />
+                    )}
+                </div>
+            </section>
+        </div>
     );
 }

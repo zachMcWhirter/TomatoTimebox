@@ -46,8 +46,6 @@ export function UserProfileProvider(props) {
             });
     };
 
-
-
     const getUserProfile = (firebaseUserId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/${firebaseUserId}`, {

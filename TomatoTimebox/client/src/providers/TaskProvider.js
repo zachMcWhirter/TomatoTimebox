@@ -8,6 +8,8 @@ export const TaskProvider = (props) => {
 
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState({});
+    const [notes, setNotes] = useState([]);
+    const [note, setNote] = useState({});
 
     //Get all Tasks for all Users (for testing purposes)
     const getAllTasks = () => {
@@ -99,10 +101,25 @@ export const TaskProvider = (props) => {
                 },
             }))
 
+            // // Get all the notes for single Task By TaskId
+            const getAllNotesForSingleTaskId = (taskId) =>
+        getToken().then((token) =>
+            fetch(`api/task/GetTaskWithNotes/${taskId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-type": "application/json"
+                }
+            }).then(resp => resp.json())
+                .then(setNotes));
+
     return (
         <TaskContext.Provider value={{
-            tasks, setTasks, task, setTask, getAllTasks, getAllTasksForSingleUserId,
-            getTaskById, addTask, deleteTask, updateTask, toggleIsFinished
+            tasks, setTasks, task, setTask, getAllTasks, 
+            getAllTasksForSingleUserId, notes, setNotes, 
+            note, setNote, getTaskById, addTask, deleteTask, 
+            updateTask, getAllNotesForSingleTaskId,
+            toggleIsFinished,  
 
         }}>
             {props.children}

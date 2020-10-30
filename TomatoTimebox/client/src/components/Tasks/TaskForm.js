@@ -53,55 +53,57 @@ export default function TaskForm() {
 
     return (
         <>
-            <Form className="newPostForm">
-                <FormGroup className="newPost">
-                    <div >
-                        <Label for="name">Name</Label>
-                        <Input
-                            type="text"
-                            required
-                            onChange={handleFieldChange}
-                            id="name"
-                            placeholder="Name"
-                            value={task.name}
-                        />
-                        <br />
-                        <Label for="category">Category</Label>
-                        <select className="userEditDropdown" onChange={handleChange}>
-                            {categories.map(category =>
-                                category.id === task.categoryId ?
-                                    <option selected value={category.id}>
-                                        {category.name}
-                                    </option> :
-                                    <option value={category.id}>
-                                        {category.name}
-                                    </option>
-                            )}
-                        </select>
-                        <br />
-                        <Label for="description">Description</Label>
-                        <Input
-                            type="text"
-                            required
-                            onChange={handleFieldChange}
-                            id="description"
-                            placeholder="Description"
-                            value={task.description}
-                        />
-                        <br />
-                        <label></label>
-                        <div>
-                            <Button
-                                className="newPostSubmitButton"
-                                type="submit"
-                                disabled={isLoading}
-                                onClick={createNewTask}
-                            >Submit</Button>
-                            <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
+            <div className="form-container">
+                <Form className="newPostForm">
+                    <FormGroup className="newPost">
+                        <div className="input-container">
+                            <Label for="name">Name</Label>
+                            <Input
+                                type="text"
+                                required
+                                onChange={handleFieldChange}
+                                id="name"
+                                placeholder="Name"
+                                value={task.name}
+                            />
+                            <br />
+                            <Label for="category">Category</Label>
+                            <select className="userEditDropdown" onChange={handleChange}>
+                                {categories.map(category =>
+                                    category.id === task.categoryId ?
+                                        <option selected value={category.id}>
+                                            {category.name}
+                                        </option> :
+                                        <option value={category.id}>
+                                            {category.name}
+                                        </option>
+                                )}
+                            </select>
+                            <br />
+                            <Label for="description">Description</Label>
+                            <Input
+                                type="text"
+                                required
+                                onChange={handleFieldChange}
+                                id="description"
+                                placeholder="Description"
+                                value={task.description}
+                            />
+                            <br />
+                            <label></label>
+                            <div className="s">
+                                <Button
+                                    className="newPostSubmitButton"
+                                    type="submit"
+                                    disabled={isLoading}
+                                    onClick={createNewTask}
+                                >Submit</Button>
+                                <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
+                            </div>
                         </div>
-                    </div>
-                </FormGroup>
-            </Form>
+                    </FormGroup>
+                </Form>
+            </div>
         </>
     )
 }
