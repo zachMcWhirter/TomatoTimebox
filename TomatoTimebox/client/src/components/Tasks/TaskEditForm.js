@@ -41,7 +41,6 @@ export default function TaskEditForm() {
         updateTask({
             name: editedTask.name,
             description: editedTask.description,
-
             id: task.id
         })
 

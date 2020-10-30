@@ -191,8 +191,8 @@ namespace TomatoTimebox.Repositories
                         UPDATE [Note]
                         SET 
                             Content = @Content, 
-                            CreateDateTime = @CreateDateTime, 
-                            TaskId = @TaskId,
+                            CreateDateTime = @CreateDateTime,
+                            TaskId = @TaskId
                         WHERE Id = @id";
 
                     cmd.Parameters.AddWithValue("@Id", note.Id);

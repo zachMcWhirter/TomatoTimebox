@@ -12,7 +12,7 @@ export const NoteProvider = (props) => {
 
     // Get a single task by its id
     const getNoteById = (noteId) => {
-        getToken().then((token) =>
+        return getToken().then((token) =>
             fetch(`/api/note/${noteId}`, {
                 method: "GET",
                 headers: {
@@ -40,9 +40,10 @@ export const NoteProvider = (props) => {
             }))
     };
 
-    // Delete a Task
-    const deleteNote = (id) =>
-        getToken().then((token) =>
+
+    // Delete a Note
+    const deleteNote = (id) => {
+        return getToken().then((token) =>
             fetch(`/api/note/delete/${id}`, {
                 method: "DELETE",
                 headers: {
@@ -50,12 +51,26 @@ export const NoteProvider = (props) => {
                     "Content-Type": "application/json"
                 },
             }))
+    };
+
+    // Edit a Note
+    const updateNote = (id, note) => {
+        return getToken().then((token) =>
+            fetch(`/api/note/edit/${id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(note)
+            }))
+    };
 
     return (
 
         <NoteContext.Provider value={{
             notes, setNotes, note, setNote, addNote,
-            deleteNote, getNoteById
+            deleteNote, getNoteById, updateNote
         }}>
             {props.children}
         </NoteContext.Provider>
