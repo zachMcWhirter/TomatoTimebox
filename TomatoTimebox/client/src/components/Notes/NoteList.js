@@ -5,19 +5,29 @@ import { UserProfileContext } from "../../providers/UserProfileProvider";
 import { Link, useParams } from "react-router-dom";
 
 export default function NoteList() {
-    const { task, notes, getTaskById, getAllNotesForSingleTaskId } = useContext(TaskContext);
+    const { task, notes, setNotes, getTaskById, getAllNotesForSingleTaskId } = useContext(TaskContext);
     const { userProfile } = useContext(UserProfileContext);
     const { id } = useParams();
+    // const [notes, setNotes] = useState([]);
+
 
     useEffect(() => {
         getAllNotesForSingleTaskId(id);
         getTaskById(id);
     }, []);
-    console.log(notes)
+
+    useEffect(() => {
+        console.log("notes:", notes);
+        console.log("id:", id);
+        console.log("task.id:", task.id)
+    }, [notes, task]);
+
+
+
     return (
         <section>
-            <h1>
-                Notes for {task.title}
+            <h1 className="noteList-h1">
+                Notes for Task: {task.name}
             </h1>
             <div>
                 {notes.map(n =>
@@ -25,7 +35,7 @@ export default function NoteList() {
                 )}
             </div>
             <p>
-                <Link class="btn-red" to="/notes/add">New Task</Link>
+                <Link className="btn-red" to="/notes/add">Add Note</Link>
             </p>
         </section>
     );

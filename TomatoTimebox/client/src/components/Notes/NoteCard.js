@@ -1,30 +1,31 @@
 import React, { useContext, useState } from "react";
 import { Card, CardBody, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom"
-import { NoteContext } from "../../providers/NoteProvider";
+import { Link, useParams } from "react-router-dom"
+import { TaskContext } from "../../providers/TaskProvider";
 
 
 export default function NoteCard({ note }) {
 
+    const { id } = useParams();
 
-    const { task } = useContext(NoteContext);
+    const { task } = useContext(TaskContext);
 
     return (
         <Card className="m-4">
             <CardBody>
-                <h4>{task.name}</h4>
-                <Link to={`/notesbytask/${task.id}`}>
+
+                {/* <Link to={`/notesbytask/${task.id}`}>
                     <button className="tag-btn">Details</button>
-                </Link>
-                {/* <Link to={`/notes/edit/${id}`}>
+                </Link> */}
+                <h3 className="note-content">{note.content} </h3>
+                <h5 className="note-createDateTime">Note Created:
+                {new Intl.DateTimeFormat('en-US').format(new Date(note.createDateTime))}</h5>
+                <Link to={`/notes/edit/${id}`}>
                     <button className="tag-btn">Edit</button>
                 </Link>
                 <Link to={`/notes/delete/${id}`}>
                     <button className="tag-btn">Delete</button>
-                </Link> */}
-                <p className="note-content">Content: {note.content} </p>
-                <p className="note-createDateTime">Note Created:
-                {new Intl.DateTimeFormat('en-US').format(new Date(note.createDateTime))}</p>
+                </Link>
             </CardBody>
             <br />
         </Card>

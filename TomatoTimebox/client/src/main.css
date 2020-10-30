@@ -62,6 +62,10 @@
     background: white;
 }
 
+.navbar-container {
+    background-color: darkslategrey;
+}
+
 .input-container
 
 .userEditDropdown {
@@ -80,6 +84,14 @@
 .task-card-container {
     display: flex;
     justify-content: space-between;
+}
+
+.noteList-h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: .5px .5px 2px black;
+    background-color: red;
 }
 
 p.task-description {

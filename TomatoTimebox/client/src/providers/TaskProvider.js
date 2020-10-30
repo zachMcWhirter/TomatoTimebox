@@ -101,25 +101,29 @@ export const TaskProvider = (props) => {
                 },
             }))
 
-            // // Get all the notes for single Task By TaskId
-            const getAllNotesForSingleTaskId = (taskId) =>
-        getToken().then((token) =>
-            fetch(`api/task/GetTaskWithNotes/${taskId}`, {
+    // // Get all the notes for single Task By TaskId
+    const getAllNotesForSingleTaskId = (taskId) => {
+
+        return getToken().then((token) =>
+            fetch(`/api/task/GetTaskWithNotes/${taskId}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    "Content-type": "application/json"
                 }
             }).then(resp => resp.json())
-                .then(setNotes));
+                .then((res) => {
+                    console.log("NOTES!!!!", res)
+                    return setNotes(res.notes)
+                }));
+    }
 
     return (
         <TaskContext.Provider value={{
-            tasks, setTasks, task, setTask, getAllTasks, 
-            getAllTasksForSingleUserId, notes, setNotes, 
-            note, setNote, getTaskById, addTask, deleteTask, 
+            tasks, setTasks, task, setTask, getAllTasks,
+            getAllTasksForSingleUserId, notes, setNotes,
+            note, setNote, getTaskById, addTask, deleteTask,
             updateTask, getAllNotesForSingleTaskId,
-            toggleIsFinished,  
+            toggleIsFinished,
 
         }}>
             {props.children}
