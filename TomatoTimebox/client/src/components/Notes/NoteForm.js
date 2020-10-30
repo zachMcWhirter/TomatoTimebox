@@ -7,7 +7,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 export default function NoteForm() {
     const { addNote } = useContext(NoteContext);
     const history = useHistory();
-    const { task, } = useContext(TaskContext);
+    const { task } = useContext(TaskContext);
 
 
     const [note, setNote] = useState({

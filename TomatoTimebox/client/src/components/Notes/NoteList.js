@@ -26,6 +26,9 @@ export default function NoteList() {
 
     return (
         <section>
+            <p>
+                <Link className="btn-red" to="/notes/add">Add Note</Link>
+            </p>
             <h1 className="noteList-h1">
                 Notes for Task: {task.name}
             </h1>
@@ -34,9 +37,6 @@ export default function NoteList() {
                     <NoteCard key={n.id} note={n} />
                 )}
             </div>
-            <p>
-                <Link className="btn-red" to="/notes/add">Add Note</Link>
-            </p>
         </section>
     );
 }
