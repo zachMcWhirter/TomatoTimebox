@@ -8,9 +8,11 @@ import TaskList from "../components/Tasks/TaskList"
 import TaskForm from "../components/Tasks/TaskForm"
 import TaskDeletePage from "../components/Tasks/TaskDelete"
 import TaskDetail from "../components/Tasks/TaskDetail"
+import TaskEditForm from "../components/Tasks/TaskEditForm"
 import NoteForm from "../components/Notes/NoteForm"
 import NoteList from "../components/Notes/NoteList"
-import TaskEditForm from "../components/Tasks/TaskEditForm"
+import NoteDeletePage from "../components/Notes/NoteDelete"
+
 
 
 export default function ApplicationViews() {
@@ -53,6 +55,10 @@ export default function ApplicationViews() {
 
                 <Route path="/notes/add" exact>
                     {isLoggedIn ? <NoteForm /> : <Redirect to="/login" />}
+                </Route>
+
+                <Route path="/notes/delete/:id">
+                    {isLoggedIn ? <NoteDeletePage /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/login">

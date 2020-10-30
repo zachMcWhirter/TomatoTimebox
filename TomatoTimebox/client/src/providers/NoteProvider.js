@@ -9,6 +9,19 @@ export const NoteProvider = (props) => {
     const [notes, setNotes] = useState([]);
     const [note, setNote] = useState({});
 
+
+    // Get a single task by its id
+    const getNoteById = (noteId) => {
+        getToken().then((token) =>
+            fetch(`/api/note/${noteId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })).then((resp) => resp.json())
+            .then(setNote);
+    };
+
     // Create a new Note
     const addNote = (note) => {
         return getToken().then((token) =>
@@ -27,11 +40,23 @@ export const NoteProvider = (props) => {
             }))
     };
 
+    // Delete a Task
+    const deleteNote = (id) =>
+        getToken().then((token) =>
+            fetch(`/api/note/delete/${id}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+            }))
 
-    
     return (
 
-        <NoteContext.Provider value={{ notes, setNotes, note, setNote, addNote }}>
+        <NoteContext.Provider value={{
+            notes, setNotes, note, setNote, addNote,
+            deleteNote, getNoteById
+        }}>
             {props.children}
         </NoteContext.Provider>
     );
