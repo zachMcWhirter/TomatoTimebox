@@ -17,7 +17,7 @@ export default function Header() {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <div>
+        <div navbar-container>
             <Navbar color="dark" dark expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">TomatoTimebox</NavbarBrand>
                 <NavbarToggler onClick={toggle} />

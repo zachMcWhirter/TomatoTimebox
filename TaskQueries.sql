@@ -226,3 +226,4 @@ WHERE Id = 2
 
 
 SELECT * from Task
+SELECT * from Note

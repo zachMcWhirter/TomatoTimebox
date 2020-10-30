@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
+// import { NoteContext } from "../../providers/NoteProvider";
 import { Card, CardBody, Button, Label, Input } from "reactstrap";
 import { useParams, Link } from "react-router-dom";
 
 export default function TaskDetail() {
+    // const { getAllNotesForSingleTaskId } = useContext(NoteContext);
     const { task, getTaskById } = useContext(TaskContext);
     const { id } = useParams();
 
-    useEffect(() => {
-        getTaskById(id)
-    }, []);
+    // useEffect(() => {
+    //     getAllNotesForSingleTaskId(id)
+    // }, []);
 
     console.log(task.isFinished);
 
@@ -31,8 +33,6 @@ export default function TaskDetail() {
                         <div className="row justify-content-between">
                             <h1 className="text-secondary">{task.name}</h1>
                             <h3 className="text-black-50">{task.category.name}</h3>
-
-
                             <p >{task.isFinished}</p>
                         </div>
 
@@ -46,9 +46,7 @@ export default function TaskDetail() {
                     <section className="row post__content">
                         <p className="col-sm-12 mt-5">{task.description}</p>
                     </section>
-
-
-                    {/* Future home of Notes!!! <Link to={`/tasks/edit/${task.id}`}><Button type="button" color="warning">Edit</Button></Link> */}
+                    <Link to={`/notesbytask/${id}`}><Button type="button" color="warning">View Notes</Button></Link>
                 </div>
             </div>
         </>

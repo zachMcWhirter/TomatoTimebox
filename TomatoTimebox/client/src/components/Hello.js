@@ -7,7 +7,7 @@ export default function Hello() {
             position: "fixed",
             left: 0,
             right: 0,
-            top: "30%",
+            top: "25%",
             marginTop: "-0.5rem",
             textAlign: "center",
             fontSize: "15vh",

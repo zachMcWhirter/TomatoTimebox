@@ -72,8 +72,8 @@ export default function TaskEditForm() {
 
     return (
         <>
-            <div className="container pt-4">
-                <div className="row justify-content-center">
+            <div className="post-container">
+                <div className="post">
                     <Card className="col-sm-12 col-lg-6">
                         <CardBody>
 
@@ -124,7 +124,7 @@ export default function TaskEditForm() {
                                                 <option selected value={category.id}>
                                                     {category.name}
                                                 </option> :
-                                                <option value={category.id}>
+                                                <option key={category.id} value={category.id}>
                                                     {category.name}
                                                 </option>
                                         )}
@@ -132,8 +132,8 @@ export default function TaskEditForm() {
                                 </FormGroup>
 
                             </Form>
-                            <Button type="button" color="success" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
-                                <Link to={`/posts`}><Button type="button" color="warning">Cancel</Button></Link>
+                            <Button type="button" color="success" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
+                                <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
                         </CardBody>
                     </Card>
                 </div>
