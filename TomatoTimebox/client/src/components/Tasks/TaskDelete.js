@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function TaskDeletePage() {
 
-    const { task, setTask, deleteTask, getTaskById } = useContext(TaskContext);
+    const { task, deleteTask, getTaskById } = useContext(TaskContext);
     const { id } = useParams();
     const history = useHistory();
 

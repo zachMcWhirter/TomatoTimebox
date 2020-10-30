@@ -20,10 +20,10 @@ export default function NoteCard({ note }) {
                 <h3 className="note-content">{note.content} </h3>
                 <h5 className="note-createDateTime">Note Created:
                 {new Intl.DateTimeFormat('en-US').format(new Date(note.createDateTime))}</h5>
-                <Link to={`/notes/edit/${id}`}>
+                <Link to={`/notes/edit/${note.id}`}>
                     <button className="tag-btn">Edit</button>
                 </Link>
-                <Link to={`/notes/delete/${id}`}>
+                <Link to={`/notes/delete/${note.id}`}>
                     <button className="tag-btn">Delete</button>
                 </Link>
             </CardBody>

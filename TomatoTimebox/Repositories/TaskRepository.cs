@@ -347,7 +347,7 @@ namespace TomatoTimebox.Repositories
                                 Id = DbUtils.GetInt(reader, "NoteId"),
                                 Content = DbUtils.GetString(reader, "Content"),
                                 TaskId = task.Id,
-                                CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime")
+                                CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTimeForNote")
                             });
                         }
 
