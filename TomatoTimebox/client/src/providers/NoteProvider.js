@@ -1,31 +1,38 @@
-// import React, { useContext, useState } from "react";
-// import { UserProfileContext } from "./UserProfileProvider";
-// import { TaskContext } from "./TaskProvider"
+import React, { useContext, useState } from "react";
+import { UserProfileContext } from "./UserProfileProvider";
 
-// export const NoteContext = React.createContext();
 
-// export const NoteProvider = (props) => {
-//     const { getToken } = useContext(UserProfileContext);
-//     const { task,} = useContext(TaskContext)
+export const NoteContext = React.createContext();
 
-//     const [notes, setNotes] = useState([]);
-//     const [note, setNote] = useState({});
+export const NoteProvider = (props) => {
+    const { getToken } = useContext(UserProfileContext);
+    const [notes, setNotes] = useState([]);
+    const [note, setNote] = useState({});
 
-//     const getAllNotesForSingleTaskId = (taskId) =>
-//         getToken().then((token) =>
-//             fetch(`api/task/GetTaskWithNotes/${taskId}`, {
-//                 method: "GET",
-//                 headers: {
-//                     Authorization: `Bearer ${token}`,
-//                     "Content-type": "application/json"
-//                 }
-//             }).then(resp => resp.json())
-//                 .then(setNotes));
+    // Create a new Note
+    const addNote = (note) => {
+        return getToken().then((token) =>
+            fetch("/api/note", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(note)
+            }).then(resp => {
+                if (resp.ok) {
+                    return resp.json();
+                }
+                throw new Error("Unauthorized");
+            }))
+    };
 
-//     return (
 
-//         <NoteContext.Provider value={{ notes, setNotes, note, setNote, getAllNotesForSingleTaskId }}>
-//             {props.children}
-//         </NoteContext.Provider>
-//     );
-// }
+    
+    return (
+
+        <NoteContext.Provider value={{ notes, setNotes, note, setNote, addNote }}>
+            {props.children}
+        </NoteContext.Provider>
+    );
+}
