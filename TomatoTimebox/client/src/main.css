@@ -114,11 +114,17 @@ html {
     /* background-image:  url("https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"); */
 }
 
+.note-list-button-container {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
 .task-container {
     display: flex;
     justify-content: space-between;
-    width: 70vw;
-    border: 1px solid #373737;
+    width: 65vw;
+    border: 1px solid #010014;
     border-radius: 12px;
     padding-left: 20px;
     
@@ -164,6 +170,30 @@ html {
     height: 100%;
 }
 
+.custom-btn {
+    display: block;
+    color: #ff0000;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: #0c1425;
+    width: fit-content;
+    height: 30px;
+    border: 1px solid rgb(68, 68, 68);
+    border-radius: 30px;
+    font-size: .9rem;
+    font-weight: 500;
+    box-shadow: 1px 1px 2px 1px #747272;
+
+}
+
+.custom-btn:hover {
+    background-color: rgb(194, 0, 0);
+    color: rgb(189, 186, 186);
+    border-color: rgb(70, 70, 70);
+    text-decoration: none;
+}
+
 .std-btn, 
 .tag-btn {
     display: block;
@@ -184,12 +214,21 @@ html {
 
 .std-btn:hover,
 .tag-btn:hover{
-    background-color: rgb(194, 0, 0);
+    background-color: rgba(194, 1, 1, 0.9);
     color: rgb(189, 186, 186);
     border-color: rgb(70, 70, 70);
     text-decoration: none;
 }
 
+.task-list-h1 {
+    font-size: 30px;
+    background-color: rgba(194, 1, 1, 0.85);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    color: rgb(2, 1, 22);
+    border: rgb(2, 1, 22) 2px solid;
+}
 
 .postAdminBtn {
     display: block;
@@ -752,15 +791,19 @@ input:checked + .slider:before {
 }
 
 .btn-red {
-    background-color: #810707;
+    background-color: rgba(194, 1, 1, 0.95);;
     padding: 5px 10px;
     color: white;
     border-radius: 25px;
+    /* text-decoration: none; */
+    border: rgb(2, 1, 22) 1px solid;
+    width: fit-content;
 }
 
 .btn-red:hover {
     text-decoration: none;
     color: white;
     background-color: #aa0808;
+    
 }
 

@@ -18,7 +18,7 @@ export default function TaskList() {
 
 
             <section >
-                <h1>
+                <h1 className="task-list-h1">
                     {(JSON.parse(userProfile).displayName)}'s Task List
                 </h1>
                 <p>

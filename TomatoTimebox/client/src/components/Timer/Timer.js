@@ -39,6 +39,7 @@ export default function TomatoTimebox() {
                 </div>
                 <button
                     onClick={startCountdown}
+                    className="btn-red"
                 >Start</button>
             </div>
         </div>
