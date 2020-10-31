@@ -74,7 +74,7 @@ export default function TaskForm() {
                                         <option selected value={category.id}>
                                             {category.name}
                                         </option> :
-                                        <option value={category.id}>
+                                        <option key={category.id} value={category.id}>
                                             {category.name}
                                         </option>
                                 )}
