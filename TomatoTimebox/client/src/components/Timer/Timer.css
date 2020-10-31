@@ -1,0 +1,68 @@
+/* body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url("https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80");
+    background-image: url("https://images.unsplash.com/photo-1540829414482-5f8ef8834d85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1063&q=80");
+    background-image: url("https://images.unsplash.com/photo-1526371233670-42d618efcec5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"); 
+} */
+  
+.TomatoTimer {
+    font-family: sans-serif;
+    color: red;
+    text-shadow: 1px 1px 1px rgb(84, 87, 84);
+    font-size: 7vh;
+}
+
+.timer-container {
+    border: #0c1425 3px groove;
+    border-radius: 15px;
+    background-color:rgba(253, 253, 253, 0.438);
+    padding: 10px;
+    
+}  
+
+.timer-and-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-title {
+    border: green 3px groove;
+    width: fit-content;
+    padding: 3px;
+    background-color: #0c1425;
+    border-radius: 7px;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    font-size: 8vh;
+    padding: 5px;
+    font-weight: 600;
+    /* background-color: rgb(18, 17, 19); */
+    background-color: #0c1425;
+    width: fit-content;
+    margin: 10px;
+    border: green 3px groove;
+    border-radius: 5px;
+    color: white;
+}
+  
+button {
+    width: 7vw;
+    height: 4vh;
+    color: green;
+    font-size: 20px;
+    border: green 3px groove;
+    border-radius: 5px;
+    background-color: yellowgreen;
+    font-weight: 600;   
+}
