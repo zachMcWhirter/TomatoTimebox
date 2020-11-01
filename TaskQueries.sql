@@ -227,3 +227,25 @@ WHERE Id = 2
 
 SELECT * from Task
 SELECT * from Note
+
+SELECT  
+    t.Id, 
+    t.[Name] AS TaskName, 
+    t.Description, 
+    t.IsFinished, 
+    t.CategoryId,
+    t.UserProfileId,
+                    
+    c.[Name] AS CategoryName,
+
+    u.FirebaseUserId, 
+    u.DisplayName,
+    u.Email,
+    u.CreateDateTime,
+    u.ImageLocation
+                              
+FROM Task t
+LEFT JOIN Category c ON t.CategoryId = c.Id
+LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+WHERE t.Id = 16
+AND t.UserProfileId = 19

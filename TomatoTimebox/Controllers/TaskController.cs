@@ -9,7 +9,7 @@ using TomatoTimebox.Repositories;
 
 namespace TomatoTimebox.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TaskController : ControllerBase
@@ -29,6 +29,7 @@ namespace TomatoTimebox.Controllers
         // works in:  SQL[x]  Postman[x]
         [HttpGet]
         public IActionResult GetAll()
+
         {
             return Ok(_taskRepository.GetAllTasks());
         }
@@ -39,6 +40,14 @@ namespace TomatoTimebox.Controllers
         public IActionResult Get(int id)
         {
             return Ok(_taskRepository.GetTaskById(id));
+        }
+
+        // Get a user specific Task by its Id
+        // works in:  SQL[x]  Postman[x]
+        [HttpGet("{id}/{userProfileId}")]
+        public IActionResult Get(int id, int userProfileId)
+        {
+            return Ok(_taskRepository.GetUserSpecificTaskById(id, userProfileId));
         }
 
         // Create a Task

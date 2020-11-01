@@ -4,6 +4,7 @@ import { TaskContext } from "../../providers/TaskProvider";
 import { UserProfileContext } from "../../providers/UserProfileProvider";
 import { Link } from "react-router-dom";
 import TomatoTimebox from "../Timer/Timer";
+import TimerWithReset from "../Timer/Timer2"
 
 export default function TaskList() {
     const { tasks, getAllTasksForSingleUserId } = useContext(TaskContext);
@@ -32,6 +33,7 @@ export default function TaskList() {
             </section>
             <div className="TomatoTimebox-container">
                 <TomatoTimebox></TomatoTimebox>
+                <T
             </div>
         </div>
     );

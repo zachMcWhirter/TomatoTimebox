@@ -413,6 +413,54 @@ namespace TomatoTimebox.Repositories
             }
         }
 
+        // GetUserSpecificTaskById
+        public Task GetUserSpecificTaskById(int id, int userProfileId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT  
+                            t.Id, 
+                            t.[Name] AS TaskName, 
+                            t.Description, 
+                            t.IsFinished, 
+                            t.CategoryId,
+                            t.UserProfileId,
+                    
+                            c.[Name] AS CategoryName,
+
+                            u.FirebaseUserId, 
+                            u.DisplayName,
+                            u.Email,
+                            u.CreateDateTime,
+                            u.ImageLocation
+                              
+                        FROM Task t
+                        LEFT JOIN Category c ON t.CategoryId = c.Id
+                        LEFT JOIN UserProfile u ON t.UserProfileId = u.id
+                        WHERE t.Id = @Id
+                        AND t.UserProfileId = @UserProfileId";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+                    DbUtils.AddParameter(cmd, "@UserProfileId", userProfileId);
+
+                    Task task = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        task = NewTaskFromReader(reader);
+                    }
+                    reader.Close();
+
+                    return task;
+                }
+            }
+        }
+
         public Task GetAllTasksWithNotesForSingleUserId(int id)
         {
             using (var conn = Connection)

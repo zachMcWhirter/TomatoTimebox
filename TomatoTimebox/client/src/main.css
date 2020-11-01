@@ -109,6 +109,10 @@ p.task-description {
 html {
     display: flex;
     /* justify-content: center; */
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
     background-image: url("https://images.unsplash.com/photo-1526371233670-42d618efcec5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
     /* background-image: url("https://images.unsplash.com/photo-1540829414482-5f8ef8834d85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1063&q=80"); */
     /* background-image:  url("https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"); */
