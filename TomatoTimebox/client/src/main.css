@@ -98,7 +98,7 @@
 }
 
 .task-card-details {
-    text-decoration-thickness: ;
+    
 }
 
 p.task-description {
@@ -115,8 +115,11 @@ p.task-description {
 }
 
 html {
+    font-family: 'Ubuntu', sans-serif;
+    /* font-family: Roboto; */
+    /* -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     background-size: cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -144,6 +147,7 @@ html {
 
 .task-container {
     display: flex;
+    
     justify-content: space-between;
     width: 60vw;
     border: 1px solid #010014;
@@ -156,7 +160,7 @@ html {
     margin-top: 10px;
     margin-left: 60px;
     margin-right: 30px;
-    align-items: center;
+    /* align-items: center; */
     
     /* justify-content: center; */
 }
@@ -165,10 +169,39 @@ html {
     padding-right: 20px;
 }
 
+.edit-task-container {
+    display: flex;
+    justify-content: space-between;
+    /* width: 60vw; */
+    border: 1px solid #010014;
+    border-radius: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    box-shadow: 1px 1px 2px 1px #747272;
+    background: rgba(113, 114, 141, 0.659);
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 30px;
+    align-items: center;
+}
+
 
 .post-container {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
+    /* width: 60vw; */
+    border: 1px solid #010014;
+    border-radius: 12px;
+    padding-left: 20px;
+    
+    box-shadow: 1px 1px 2px 1px #747272;
+    background: rgba(113, 114, 141, 0.659);
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 30px;
+    align-items: center;
+    /* display: flex;
     width: 125%;
     border: 1px solid #373737;
     border-radius: 12px;
@@ -176,10 +209,11 @@ html {
     box-shadow: 1px 1px 2px 1px #747272;
     background: rgba(113, 114, 141, 0.659);
     margin-top: 20px;
-    /* margin-left: 60px; */
     align-items: center;
-    justify-content: center;
-
+    justify-content: center; */
+    
+    /* justify-content: space-between; */
+    /* margin-left: 60px; */
     /* background-color: rgb(110, 110, 110); */
     /* background-image: url("https://images.unsplash.com/photo-1540829414482-5f8ef8834d85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1063&q=80"); */
     /* background-image: url("https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"); */
@@ -243,6 +277,15 @@ html {
     text-decoration: none;
 }
 
+.task-edit {
+    border: black 2px solid;
+    border-radius: 15px;
+    width: 35vw;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgba(253, 253, 253, 0.438);
+}
+
 .task-list-h1 {
     font-size: 35px;
     background-color: rgba(194, 1, 1, 0.85);
@@ -253,7 +296,19 @@ html {
     border: rgb(2, 1, 22) 2px solid;
 }
 
-.postAdminBtn {
+.edit-task-h1 {
+    font-size: 30px;
+    background-color: rgba(194, 1, 1, 0.85);
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 5px;
+    margin-left: 20px;
+    border-radius: 10px;
+    color: rgb(2, 1, 22);
+    border: rgb(2, 1, 22) 2px solid;
+}
+
+/* .postAdminBtn {
     display: block;
     color: black;
     cursor: pointer;
@@ -269,7 +324,7 @@ html {
     font-weight: 500;
     box-shadow: 1px 1px 2px 1px #747272;
 
-}
+} */
 
 .postAdminBtn:hover {
     border: 2px solid #9c0a0a;
@@ -417,15 +472,19 @@ fieldset {
 }
 
 .post {
-    width: 70%;
+    border: black 2px solid;
+    border-radius: 15px;
+    width: 50vw;
+    padding: 10px;
+    background-color: rgba(253, 253, 253, 0.438);
     
 }
 
-.postBtns {
+/* .postBtns {
     padding: 20px 0;
-}
+} */
 
-.users-table, 
+/* .users-table, 
 .tagCard, 
 .userDetailCard, 
 .post {
@@ -434,7 +493,7 @@ fieldset {
     border-radius: 15px;
     padding: 20px 40px;
     box-shadow: 3px 3px 5px;
-}
+} */
 
 .tagCard {
     background-color: white;
@@ -556,12 +615,6 @@ fieldset {
 .postTableHeader {
     border-bottom: 2px solid black;
     box-shadow: 0px 3px 5px 0px #373737;
-}
-
-.post-container {
-    position: sticky;
-    top: 0;
-    border-radius: 15px;
 }
 
 .authorPostCards {
