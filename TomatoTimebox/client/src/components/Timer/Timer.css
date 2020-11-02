@@ -16,7 +16,7 @@
     place-items: center;
     margin-top: 5rem;
     margin-left: 5rem;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(113, 114, 141, 0.74);
     /* background: linear-gradient(
       90deg,
       rgba(194, 193, 193, 0.8) 0%,
@@ -32,7 +32,7 @@
   .time {
     font-size: 6rem;
     margin-bottom: 1rem;
-    color: rgb(255, 255, 255);
+    color: #0c1425;
   }
   
   .buttons button {
@@ -55,13 +55,13 @@
   }
   
   .start {
-    background: rgba(62, 217, 39, 1);
-    color: white; 
+    background:#0c1425;
+    color: red; 
   }
   
   .reset {
     background: rgba(206, 0, 0, 1);
-    color: white;
+    color: #0c1425;
   }
 
   /* .pause {
