@@ -46,10 +46,6 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <TaskDeletePage /> : <Redirect to="/login" />}
                 </Route>
 
-                {/* <Route path="/tasks/details/:id/notes">
-                    {isLoggedIn ? <NoteList /> : <Redirect to="/login" />}
-                </Route> */}
-
                 <Route path="/notesbytask/:id/" exact>
                     {isLoggedIn ? <NoteList /> : <Redirect to="/login" />}
                 </Route>

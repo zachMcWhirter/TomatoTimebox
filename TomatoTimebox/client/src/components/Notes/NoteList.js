@@ -26,9 +26,14 @@ export default function NoteList() {
 
     return (
         <section>
-            <p>
-                <Link className="btn-red" to="/notes/add">Add Note</Link>
-            </p>
+            <div className="note-list-button-container">
+                <p>
+                    <Link className="btn-red" to="/notes/add">Add Note</Link>
+                </p>
+                <Link style={{ textDecoration: 'none' }} to={`/tasks/details/${task.id}`}>
+                    <button className="custom-btn">&#x2190; Back to {task.name}</button>
+                </Link>
+            </div>
             <h1 className="noteList-h1">
                 Notes for Task: {task.name}
             </h1>

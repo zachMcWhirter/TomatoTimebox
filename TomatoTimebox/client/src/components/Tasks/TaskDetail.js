@@ -1,19 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
-// import { NoteContext } from "../../providers/NoteProvider";
+import { UserProfileContext } from "../../providers/UserProfileProvider";
+
 import { Card, CardBody, Button, Label, Input } from "reactstrap";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 export default function TaskDetail() {
-    // const { getAllNotesForSingleTaskId } = useContext(NoteContext);
     const { task, getTaskById } = useContext(TaskContext);
+    const { userProfile } = useContext(UserProfileContext);
     const { id } = useParams();
+    const history = useHistory();
 
-    // useEffect(() => {
-    //     getAllNotesForSingleTaskId(id)
-    // }, []);
+    useEffect(() => {
+        getTaskById(id)
+        // if (task.userProfileId != userProfile.id) {
+
+        // }
+    }, []);
 
     console.log(task.isFinished);
+    // console.log(userProfile.id);
+    console.log("task:", task);
 
     // we need the if statement to return true on the first render.
     // so we must include !task.userProfile because react will not let us
@@ -22,6 +29,9 @@ export default function TaskDetail() {
         return null
     }
 
+    console.log(task.isFinished);
+
+    console.log("task:", task);
     return (
         <>
             <Link style={{ textDecoration: 'none' }} to={`/tasks`}>

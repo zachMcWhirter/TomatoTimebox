@@ -33,7 +33,7 @@ export default function NoteForm() {
         }
         addNote(note)
             .then((n) => {
-                history.push(`/tasks`)
+                history.push(`/notesbytask/${task.id}`)
             })
     };
 
@@ -45,7 +45,8 @@ export default function NoteForm() {
                         <div className="input-container">
                             <Label for="name">Content</Label>
                             <Input
-                                type="text"
+                                type="textarea"
+                                rows="2" cols="20" maxlength="200"
                                 required
                                 onChange={handleFieldChange}
                                 id="content"

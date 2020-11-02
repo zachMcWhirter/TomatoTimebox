@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import ApplicationViews from "./components/ApplicationViews";
 import './App.css';
 import "./main.css"
+import { TargetTimeProvider } from './components/Timer/TargetTimeProvider';
 
 function App() {
   return (
@@ -16,8 +17,10 @@ function App() {
         <TaskProvider>
           <NoteProvider>
             <CategoryProvider>
-              <Header />
-              <ApplicationViews />
+              <TargetTimeProvider>
+                <Header />
+                <ApplicationViews />
+              </TargetTimeProvider>
             </CategoryProvider>
           </NoteProvider>
         </TaskProvider>

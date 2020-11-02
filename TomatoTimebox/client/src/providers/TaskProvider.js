@@ -47,6 +47,19 @@ export const TaskProvider = (props) => {
             .then(setTask);
     };
 
+    // Get a user specific task by its id
+    const getUserSpecificTaskById = (taskId, userProfileId) => {
+        getToken().then((token) =>
+            fetch(`/api/task/${taskId}/${userProfileId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })).then((resp) => resp.json())
+            .then()
+            .then(setTask);
+    };
+
     // Create a new task
     const addTask = (task) => {
         return getToken().then((token) =>
@@ -123,7 +136,7 @@ export const TaskProvider = (props) => {
             getAllTasksForSingleUserId, notes, setNotes,
             note, setNote, getTaskById, addTask, deleteTask,
             updateTask, getAllNotesForSingleTaskId,
-            toggleIsFinished,
+            toggleIsFinished, getUserSpecificTaskById
 
         }}>
             {props.children}

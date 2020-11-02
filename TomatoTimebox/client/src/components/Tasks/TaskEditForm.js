@@ -71,72 +71,73 @@ export default function TaskEditForm() {
 
     return (
         <>
-            <div className="post-container">
-                <div className="post">
-                    <Card className="col-sm-12 col-lg-6">
-                        <CardBody>
 
-                            <Form>
-                                <FormGroup>
+            <div className="edit-task-container">
+                <Card >
+                    <h1 className="edit-task-h1">Edit Task: {task.name} </h1>
+                    <CardBody className="task-edit">
 
-                                    <Input
-                                        id={editedTask.id}
-                                        onChange={handleFieldChange}
-                                        type="hidden"
-                                        value={task.id}
-                                    />
-                                    <Input
-                                        id={editedTask.isFinshed}
-                                        onChange={handleFieldChange}
-                                        type="hidden"
-                                        value={task.isFinished}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="name">Name</Label>
-                                    <Input
-                                        type="text"
-                                        id="name"
-                                        required
-                                        defaultValue={editedTask.name}
-                                        name="name"
-                                        onChange={handleFieldChange}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="description">Description</Label>
-                                    <Input
-                                        type="text"
-                                        id="description"
-                                        required
-                                        defaultValue={editedTask.description}
-                                        name="description"
-                                        onChange={handleFieldChange}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="category">Category</Label>
-                                    <br />
-                                    <select className="userEditDropdown" onChange={handleChange}>
-                                        {categories.map(category =>
-                                            category.id === task.categoryId ?
-                                                <option selected value={category.id}>
-                                                    {category.name}
-                                                </option> :
-                                                <option key={category.id} value={category.id}>
-                                                    {category.name}
-                                                </option>
-                                        )}
-                                    </select>
-                                </FormGroup>
+                        <Form>
+                            <FormGroup>
 
-                            </Form>
-                            <Button type="button" color="success" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
+                                <Input
+                                    id={editedTask.id}
+                                    onChange={handleFieldChange}
+                                    type="hidden"
+                                    value={task.id}
+                                />
+                                <Input
+                                    id={editedTask.isFinshed}
+                                    onChange={handleFieldChange}
+                                    type="hidden"
+                                    value={task.isFinished}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="name">Name: </Label>
+                                <Input
+                                    type="text"
+                                    id="name"
+                                    required
+                                    defaultValue={editedTask.name}
+                                    name="name"
+                                    onChange={handleFieldChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="description">Description: </Label>
+                                <Input
+                                    type="text"
+                                    id="description"
+                                    required
+                                    defaultValue={editedTask.description}
+                                    name="description"
+                                    onChange={handleFieldChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="category">Category: </Label>
+
+                                <select className="userEditDropdown" onChange={handleChange}>
+                                    {categories.map(category =>
+                                        category.id === task.categoryId ?
+                                            <option selected value={category.id}>
+                                                {category.name}
+                                            </option> :
+                                            <option key={category.id} value={category.id}>
+                                                {category.name}
+                                            </option>
+                                    )}
+                                </select>
+                            </FormGroup>
+
+                        </Form>
+                        <Button type="button" color="success" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
                                 <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
-                        </CardBody>
-                    </Card>
-                </div>
+                    </CardBody>
+                </Card>
             </div>
+
         </>
     );
 }
