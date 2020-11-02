@@ -24,8 +24,8 @@ export default function TaskDeletePage() {
 
     return (
         <>
-            <main className="postContainer">
-                <section className="post">
+            <div className="task-edit-container">
+                <section className="task-edit">
                     <h4> Delete this Task: "{task.name}"?</h4>
                     <hr />
                     <div className="row">
@@ -39,7 +39,7 @@ export default function TaskDeletePage() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </div>
         </>
     );
 }
