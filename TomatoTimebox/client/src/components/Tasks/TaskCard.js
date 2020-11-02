@@ -22,13 +22,26 @@ export default function TaskCard({ task }) {
     };
 
     return (
-        <Card className="m-4">
+        <Card className="task-card">
             <CardBody >
                 <div>
-                    <h3>{task.name}</h3>
+                    <h2>{task.name}</h2>
                 </div>
                 <div className="task-card-container">
-                    <div>
+                    <div className="task-card-details">
+                        <Label for="task-description">Description:</Label>
+                        <p className="task-description"> {task.description} </p>
+                        <Label for="task-category">Category:</Label>
+                        <p className="task-category">{task.category.name} </p>
+                        <Label for="isFinished">Task Completed</Label>
+                        <Input
+                            name="isFinished"
+                            type="checkbox"
+                            checked={checked}
+                            onChange={isChecked}
+                        />
+                    </div>
+                    <div className="task-card-button-container">
                         <Link to={`/tasks/details/${task.id}`}>
                             <button className="tag-btn">Details</button>
                         </Link>
@@ -38,17 +51,6 @@ export default function TaskCard({ task }) {
                         <Link to={`/tasks/delete/${task.id}`}>
                             <button className="tag-btn">Delete</button>
                         </Link>
-                    </div>
-                    <div>
-                        <p className="task-description">Description: {task.description} </p>
-                        <p className="task-description">Category: {task.category.name} </p>
-                        <Label for="isFinished">Task Completed</Label>
-                        <Input
-                            name="isFinished"
-                            type="checkbox"
-                            checked={checked}
-                            onChange={isChecked}
-                        />
                     </div>
                 </div>
             </CardBody>

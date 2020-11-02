@@ -81,9 +81,12 @@
     color: white;
 }
 
+
+
 .task-card-container {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .noteList-h1 {
@@ -94,14 +97,19 @@
     background-color: red;
 }
 
+.task-card-details {
+    text-decoration-thickness: ;
+}
+
 p.task-description {
     margin: 0
 }
 
+/* container for a single task card*/
 .card-body {
     border: black 2px solid;
     border-radius: 15px;
-    width: 450px;
+    width: 50vw;
     padding: 10px;
     background-color: rgba(253, 253, 253, 0.438);
 }
@@ -118,16 +126,26 @@ html {
     /* background-image:  url("https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"); */
 }
 
+.task-list-view {
+    display: flex;
+    
+}
+
 .note-list-button-container {
     display: flex;
     align-items: center;
     /* justify-content: center; */
 }
 
+.task-card-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .task-container {
     display: flex;
     justify-content: space-between;
-    width: 65vw;
+    width: 60vw;
     border: 1px solid #010014;
     border-radius: 12px;
     padding-left: 20px;
@@ -137,6 +155,7 @@ html {
     background: rgba(113, 114, 141, 0.659);
     margin-top: 10px;
     margin-left: 60px;
+    margin-right: 30px;
     align-items: center;
     
     /* justify-content: center; */
@@ -225,7 +244,7 @@ html {
 }
 
 .task-list-h1 {
-    font-size: 30px;
+    font-size: 35px;
     background-color: rgba(194, 1, 1, 0.85);
     width: fit-content;
     padding: 5px;

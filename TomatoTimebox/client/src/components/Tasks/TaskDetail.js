@@ -3,15 +3,19 @@ import { TaskContext } from "../../providers/TaskProvider";
 import { UserProfileContext } from "../../providers/UserProfileProvider";
 
 import { Card, CardBody, Button, Label, Input } from "reactstrap";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 export default function TaskDetail() {
     const { task, getTaskById } = useContext(TaskContext);
     const { userProfile } = useContext(UserProfileContext);
     const { id } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         getTaskById(id)
+        // if (task.userProfileId != userProfile.id) {
+
+        // }
     }, []);
 
     console.log(task.isFinished);

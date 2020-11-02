@@ -1,67 +1,105 @@
-import React, { useState, useEffect } from "react";
-import "./styles.css";
+import React, { useState, useEffect, useContext } from "react";
+import "./Timer.css";
+import { TargetTimeContext, TargetTimeProvider } from "./TargetTimeProvider";
 
 //set minutes and seconds to desired default value
 export default function TimerWithReset() {
-  const [second, setSecond] = useState("00");
-  const [minute, setMinute] = useState("25");
-  // when the page renders, the timer will not start until the
-  // user clicks the start button
-  const [isActive, setIsActive] = useState(false);
 
-  const [counter, setCounter] = useState(1500);
+    const [second, setSecond] = useState("--");
+    const [minute, setMinute] = useState("--");
+    // when the page renders, the timer will not start until the
+    // user clicks the start button
 
-  useEffect(() => {
-    let intervalId;
+    const { targetTime, setTargetTime, pauseTimer,
+        restartTimer, pauseAt, isActive, msRemaining } = useContext(TargetTimeContext)
 
-    if (isActive) {
-      intervalId = setInterval(() => {
-        const secondCounter = counter % 60;
-        const minuteCounter = Math.floor(counter / 60);
+    const [targetDate, setTargetDate] = useState(targetTime)
+    // const [counter, setCounter] = useState(1500);
+
+    const counter = () => {
+        if (!isActive()) {
+            //secs remaining
+            return msRemaining / 1000
+        }
+        const counterTime = (targetTime - new Date().getTime()) / 1000
+        if (counterTime < 0) {
+            return 0
+        }
+        return (targetTime - new Date().getTime()) / 1000
+    }
+
+    const displayTime = () => {
+        const secondCounter = Math.round(counter()) % 60;
+        const minuteCounter = Math.floor(counter() / 60);
 
         let computedSecond =
-          String(secondCounter).length === 1
-            ? `0${secondCounter}`
-            : secondCounter;
+            String(secondCounter).length === 1
+                ? `0${secondCounter}`
+                : secondCounter;
         let computedMinute =
-          String(minuteCounter).length === 1
-            ? `0${minuteCounter}`
-            : minuteCounter;
+            String(minuteCounter).length === 1
+                ? `0${minuteCounter}`
+                : minuteCounter;
 
         setSecond(computedSecond);
         setMinute(computedMinute);
-
-        setCounter((counter) => counter - 1);
-      }, 1000);
     }
 
-    return () => clearInterval(intervalId);
-  }, [isActive, counter]);
+    const handleTimerFinished = () => {
+        alert("Great Job! Time for a 5 minute break")
+    }
 
-  function stopTimer() {
-    setIsActive(false);
-    setCounter(1500);
-    setSecond("00");
-    setMinute("25");
-  }
+    useEffect(() => {
+        let intervalId;
 
-  return (
-    <div class="container">
-      <div class="time">
-        <span class="minute">{minute}</span>
-        <span>:</span>
-        <span class="second">{second}</span>
-      </div>
-      <div class="buttons">
-        <button onClick={() => setIsActive(!isActive)} class="start">
-          {isActive ? "Pause" : "Start"}
-        </button>
-        <button onClick={stopTimer} class="reset">
-          Reset
-        </button>
-      </div>
-    </div>
-  );
+        intervalId = setInterval(() => {
+            displayTime()
+            if (counter() === 0) {
+                clearInterval(intervalId);
+                handleTimerFinished();
+
+            }
+        }, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [isActive]);
+
+    const handlePausePress = () => {
+
+        if (isActive()) {
+            pauseTimer()
+        } else {
+            restartTimer()
+        }
+    }
+
+    // set new date
+    function resetTimer() {
+        pauseAt(1000 * 60 * 25)
+        setSecond("00");
+        setMinute("25");
+
+    }
+
+    return (
+        <div className="container">
+            <div class="time">
+                <span className="minute">{minute}</span>
+                <span>:</span>
+                <span className="second">{second}</span>
+            </div>
+            <div >
+                <div className="buttons">
+                    <button onClick={() => handlePausePress()} className="start">
+                        {isActive() ? "Pause" : "Start"}
+                    </button>
+                    <button onClick={resetTimer} className="reset">
+                        Reset
+                </button>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 
