@@ -3,7 +3,6 @@ import TaskCard from "./TaskCard";
 import { TaskContext } from "../../providers/TaskProvider";
 import { UserProfileContext } from "../../providers/UserProfileProvider";
 import { Link } from "react-router-dom";
-// import TomatoTimebox from "../Timer/Timer"
 import TimerWithReset from "../Timer/Timer2"
 
 export default function TaskList() {

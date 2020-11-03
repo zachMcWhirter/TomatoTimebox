@@ -1,14 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink
-} from 'reactstrap';
+import { NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { UserProfileContext } from "../providers/UserProfileProvider";
 import TimerWithReset from "../components/Timer/Timer2";
 
@@ -50,19 +42,6 @@ export default function Header() {
                         </>
                     }
                 </div>
-                {/* <div>
-                    {!isLoggedIn &&
-                        <>
-                            <NavItem>
-                                <NavLink tag={RRNavLink} to="/login">Login</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink tag={RRNavLink} to="/register">Register</NavLink>
-                            </NavItem>
-                        </>
-                    }
-                </div> */}
-                {/* </div> */}
             </div>
 
         </div>
