@@ -16,7 +16,7 @@ export default function NoteDeletePage() {
 
     const deleteThisNote = () => {
         deleteNote(parseInt(id))
-            .then(() => history.push("/tasks"));
+            .then(() => history.push(`/notesbytask/${note.taskId}`));
     }
 
     if (!note) {

@@ -24,9 +24,10 @@ export default function TaskDeletePage() {
 
     return (
         <>
-            <div className="task-edit-container">
-                <section className="task-edit">
-                    <h4> Delete this Task: "{task.name}"?</h4>
+            <div className="delete-confirm-container">
+                    <h3> Delete this Task ?</h3>
+                <section className="delete-task">
+                    <h1 className="delete-task-h1">{task.name}</h1>
                     <hr />
                     <div className="row">
                         <div className="actionBtns">

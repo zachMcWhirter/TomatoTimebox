@@ -71,7 +71,7 @@ export default function TaskEditForm() {
 
     return (
         <>
-            <div className="edit-task-container">
+            <div className="task-edit-container">
                 <Card >
                     <h1 className="edit-task-h1">Edit Task: {task.name} </h1>
                     <div className="task-edit">

@@ -226,7 +226,15 @@ namespace TomatoTimebox.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
+
+                    // We have to add the following code to the SQL call
+                    // to allow for deleting tasks with notes attached to them
+                    // DELETE FROM Note
+                    // WHERE TaskId = @Id
                     cmd.CommandText = @"
+                        DELETE FROM Note
+                        WHERE TaskId = @Id
+
                         DELETE FROM [Task]
                         WHERE Id = @Id";
 

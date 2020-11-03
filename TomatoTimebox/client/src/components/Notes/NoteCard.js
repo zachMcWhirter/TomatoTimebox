@@ -1,19 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Card, CardBody, Label, Input } from "reactstrap";
 import { Link, useParams } from "react-router-dom"
-import { TaskContext } from "../../providers/TaskProvider";
+
 
 
 export default function NoteCard({ note }) {
 
-    const { id } = useParams();
-
-    const { task } = useContext(TaskContext);
-
     return (
         <Card className="m-4">
             <CardBody>
-
                 {/* <Link to={`/notesbytask/${task.id}`}>
                     <button className="tag-btn">Details</button>
                 </Link> */}

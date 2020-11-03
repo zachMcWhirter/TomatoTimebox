@@ -37,7 +37,7 @@ export default function TaskDetail() {
             <Link style={{ textDecoration: 'none' }} to={`/tasks`}>
                 <button className="std-btn">&#x2190; Back to Tasks</button>
             </Link>
-            <div className="edit-task-container">
+            <div className="task-edit-container">
                 <h1 className="edit-task-h1">Task Details</h1>
                 <div className="task-edit">
                     <section >
