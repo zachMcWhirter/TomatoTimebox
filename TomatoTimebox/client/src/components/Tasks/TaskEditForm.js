@@ -71,15 +71,13 @@ export default function TaskEditForm() {
 
     return (
         <>
-
-            <div className="edit-task-container">
+            <div className="task-edit-container">
                 <Card >
                     <h1 className="edit-task-h1">Edit Task: {task.name} </h1>
-                    <CardBody className="task-edit">
+                    <div className="task-edit">
 
                         <Form>
                             <FormGroup>
-
                                 <Input
                                     id={editedTask.id}
                                     onChange={handleFieldChange}
@@ -130,14 +128,12 @@ export default function TaskEditForm() {
                                     )}
                                 </select>
                             </FormGroup>
-
                         </Form>
-                        <Button type="button" color="success" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
+                        <Button type="button" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
                                 <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
-                    </CardBody>
+                    </div>
                 </Card>
             </div>
-
         </>
     );
 }

@@ -35,7 +35,7 @@ export default function NoteEditForm() {
 
         updateNote(editedNote.id, editedNote)
             .then(() => {
-                history.push(`/tasks`);
+                history.push(`/notesbytask/${note.taskId}`);
             })
 
     }

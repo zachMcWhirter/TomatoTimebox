@@ -12,7 +12,6 @@ export default function NoteForm() {
 
     const [note, setNote] = useState({
         content: "",
-        createDateTime: "",
         taskId: task.id
     });
 
@@ -54,15 +53,13 @@ export default function NoteForm() {
                                 value={note.content}
                             />
                             <br />
-                            <Label for="createDateTime">Note Created On: </Label>
+                            {/* <Label for="createDateTime">Note Created On: </Label>
                             <Input
-                                type="datetime-local"
+                                type="hidden"
                                 required
-                                onChange={handleFieldChange}
                                 id="createDateTime"
-                                placeholder="Note Created On:"
                                 value={note.createDateTime}
-                            />
+                            /> */}
                             <div className="s">
                                 <Button
                                     className="newPostSubmitButton"

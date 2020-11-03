@@ -13,6 +13,7 @@ namespace TomatoTimebox.Models
         [Required]
         public string Content { get; set; }
 
+        [DataType(DataType.Date)]
         [Required]
         public DateTime CreateDateTime { get; set; }
 

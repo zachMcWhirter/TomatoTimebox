@@ -6,7 +6,7 @@ export const TargetTimeProvider = (props) => {
 
     const [targetTime, setTargetTime] = useState(null);
 
-    const [msRemaining, setMsRemaining] = useState(1000 * 5);
+    const [msRemaining, setMsRemaining] = useState(1000 * 60 * 25);
     // What we need: [ elapsed time, ]    
     const pauseTimer = () => {
         if (!targetTime) {
