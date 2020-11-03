@@ -31,8 +31,11 @@ export default function TaskCard({ task }) {
                 </div>
                 <div className="task-card-container">
                     <div className="task-card-details">
-                        <p className="task-description"> {task.description} </p>
-                        <p className="task-description">Category: {task.category.name} </p>
+                        
+                        <p className="task-label"> {task.description} </p>
+                        <hr />
+                        <p className="task-label">Category: {task.category.name} </p>
+                        <hr />
                         <Label for="isFinished">Task Completed</Label>
                         <Input
                             name="isFinished"

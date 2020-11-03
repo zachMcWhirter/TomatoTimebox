@@ -24,22 +24,24 @@ export default function TaskDeletePage() {
 
     return (
         <>
-            <div className="delete-confirm-container">
+            <div className="delete-body">
+                <div className="delete-confirm-container">
                     <h3> Delete this Task ?</h3>
-                <section className="delete-task">
-                    <h1 className="delete-task-h1">{task.name}</h1>
-                    <hr />
-                    <div className="row">
+                    <section className="delete-task">
+                        <div>
+                            <h1 className="delete-task-h1">{task.name}</h1>
+                        </div>
                         <div className="actionBtns">
                             <div className="form-group">
+                                <hr />
                                 <input type="submit" onClick={deleteThisTask} value="Confirm" className="btn-red" />&nbsp;&nbsp;|&nbsp;&nbsp;
                                 <Link to={`/tasks`}>
                                     Cancel
                                 </Link>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </>
     );

@@ -22,7 +22,7 @@ export default function TaskList() {
                     <section >
                         <h1 className="task-list-h1">
                             {(JSON.parse(userProfile).displayName)}'s Task List
-                </h1>
+                        </h1>
                         <p>
                             <Link class="btn-red" to="/tasks/add">New Task</Link>
                         </p>

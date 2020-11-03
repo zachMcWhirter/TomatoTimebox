@@ -45,7 +45,6 @@ namespace TomatoTimebox.Controllers
         public IActionResult Post(Note note)
         {
             note.CreateDateTime = DateTime.Now;
-
             _noteRepository.Add(note);
             return CreatedAtAction("Get", new { id = note.Id }, note);
         }

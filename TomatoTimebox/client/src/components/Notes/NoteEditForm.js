@@ -53,44 +53,37 @@ export default function NoteEditForm() {
     return (
         <>
             <div className="post-container">
-                <div className="post">
-                    <Card className="col-sm-12 col-lg-6">
-                        <CardBody>
-
-                            <Form>
-                                <FormGroup>
-
-                                    <Input
-                                        id={editedNote.id}
-                                        onChange={handleFieldChange}
-                                        type="hidden"
-                                        value={note.id}
-                                    />
-                                    <Input
-                                        id={editedNote.taskId}
-                                        onChange={handleFieldChange}
-                                        type="hidden"
-                                        value={note.taskId}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="content">Content</Label>
-                                    <Input
-                                        type="text"
-                                        id="content"
-                                        required
-                                        defaultValue={editedNote.content}
-                                        name="content"
-                                        onChange={handleFieldChange}
-                                    />
-                                </FormGroup>
-
-                            </Form>
-                            <Button type="button" color="success" className="btn-red" onClick={e => { editNote() }}>Save</Button> &nbsp;&nbsp;
+                <CardBody>
+                    <Form>
+                        <FormGroup>
+                            <Input
+                                id={editedNote.id}
+                                onChange={handleFieldChange}
+                                type="hidden"
+                                value={note.id}
+                            />
+                            <Input
+                                id={editedNote.taskId}
+                                onChange={handleFieldChange}
+                                type="hidden"
+                                value={note.taskId}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="content">Content</Label>
+                            <Input
+                                type="text"
+                                id="content"
+                                required
+                                defaultValue={editedNote.content}
+                                name="content"
+                                onChange={handleFieldChange}
+                            />
+                        </FormGroup>
+                    </Form>
+                    <Button type="button" color="success" className="btn-red" onClick={e => { editNote() }}>Save</Button> &nbsp;&nbsp;
                                 <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
-                        </CardBody>
-                    </Card>
-                </div>
+                </CardBody>
             </div>
         </>
     );

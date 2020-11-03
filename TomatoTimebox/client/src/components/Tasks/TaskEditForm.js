@@ -13,6 +13,7 @@ export default function TaskEditForm() {
     const { id } = useParams();
     const history = useHistory();
 
+    // check for bug
     const [editedTask, setEditedTask] = useState({
         name: "",
         description: "",
@@ -20,7 +21,7 @@ export default function TaskEditForm() {
         isFinished: task.isFinished,
         userProfileId: task.userProfileId
     });
-
+    console.log(editedTask, "EDITED taSK")
     const handleChange = (e) => {
         setCategoryId(e.target.value);
     }
@@ -71,11 +72,11 @@ export default function TaskEditForm() {
 
     return (
         <>
-            <div className="task-edit-container">
-                <Card >
+            <div className="delete-body">
+                <div className="task-edit-container">
+
                     <h1 className="edit-task-h1">Edit Task: {task.name} </h1>
                     <div className="task-edit">
-
                         <Form>
                             <FormGroup>
                                 <Input
@@ -129,10 +130,12 @@ export default function TaskEditForm() {
                                 </select>
                             </FormGroup>
                         </Form>
+                        <hr />
                         <Button type="button" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
                                 <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
                     </div>
-                </Card>
+
+                </div>
             </div>
         </>
     );
