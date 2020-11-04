@@ -38,39 +38,33 @@ export default function NoteForm() {
 
     return (
         <>
-            <div className="form-container">
-                <Form className="newPostForm">
-                    <FormGroup className="newPost">
-                        <div className="input-container">
-                            <Label for="name">Content</Label>
-                            <Input
-                                type="textarea"
-                                rows="2" cols="20" maxlength="200"
-                                required
-                                onChange={handleFieldChange}
-                                id="content"
-                                placeholder="Content"
-                                value={note.content}
-                            />
-                            <br />
-                            {/* <Label for="createDateTime">Note Created On: </Label>
-                            <Input
-                                type="hidden"
-                                required
-                                id="createDateTime"
-                                value={note.createDateTime}
-                            /> */}
-                            <div className="s">
-                                <Button
-                                    className="newPostSubmitButton"
-                                    type="submit"
-                                    disabled={isLoading}
-                                    onClick={createNewNote}
-                                >Submit</Button>
-                                <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
-                            </div>
-                        </div>
-                    </FormGroup>
+            <div className="extra-box">
+                <Form className="add-task">
+                    <div>
+                        <h1 className="add-task-h1">Create a New Note</h1>
+                    </div>
+                    <fieldset className="add-task">
+                        <Label className for="content" style={{ fontWeight: "bold" }}>Content</Label>
+                        <Input
+                            type="textarea"
+                            maxlength="200"
+                            required
+                            onChange={handleFieldChange}
+                            id="content"
+                            placeholder="Note Content...."
+                            value={note.content}
+                        />
+                    </fieldset>
+                    <br />
+                    <div className="submit-cancel-buttons">
+                        <Button
+                            className="btn-red"
+                            type="submit"
+                            disabled={isLoading}
+                            onClick={createNewNote}
+                        >Submit</Button>
+                        <Link to={`/notesbytask/${task.id}`}><Button type="button" className="btn-blue">Cancel</Button></Link>
+                    </div>
                 </Form>
             </div>
         </>

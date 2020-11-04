@@ -45,7 +45,6 @@ export default function TaskEditForm() {
             id: task.id
         })
 
-
         const parsedCat = parseInt(categoryId);
         editedTask.categoryId = parsedCat;
 
@@ -64,7 +63,6 @@ export default function TaskEditForm() {
         stateToChange[e.target.id] = e.target.value;
         setEditedTask(stateToChange);
     };
-
 
     if (!editedTask) {
         return null

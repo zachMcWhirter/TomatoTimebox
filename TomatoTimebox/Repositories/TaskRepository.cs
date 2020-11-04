@@ -120,6 +120,7 @@ namespace TomatoTimebox.Repositories
 
                     DbUtils.AddParameter(cmd, "@Id", id);
 
+                    // allows the OK method to return null if the id is not valid
                     Task task = null;
 
                     var reader = cmd.ExecuteReader();
