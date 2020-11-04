@@ -53,56 +53,65 @@ export default function TaskForm() {
 
     return (
         <>
-            <div className="form-container">
-                <Form className="newPostForm">
-                    <FormGroup className="newPost">
-                        <div className="input-container">
-                            <Label for="name">Name</Label>
-                            <Input
-                                type="text"
-                                required
-                                onChange={handleFieldChange}
-                                id="name"
-                                placeholder="Name"
-                                value={task.name}
-                            />
+            <div className="extra-box">
+                <div className="add-task-form-container">
+                    <div>
+                        <h1 className="add-task-h1">Create a New Task</h1>
+                    </div>
+                    <Form className="task-edit">
+                        <fieldset className="add-task">
+                            <FormGroup style={{ display: "flex", justifyContent: "space-between" }}>
+                                <Label for="name" style={{ fontWeight: "bold" }}>Name:</Label>
+                                <Input
+                                    type="text"
+                                    required
+                                    onChange={handleFieldChange}
+                                    id="name"
+                                    placeholder="Name"
+                                    value={task.name}
+                                />
+                            </FormGroup>
+                            <FormGroup style={{ display: "flex", justifyContent: "space-between" }}>
+                                <Label for="description" style={{ fontWeight: "bold" }}>Description:</Label>
+                                <Input
+                                    type="textarea"
+                                    required
+                                    onChange={handleFieldChange}
+                                    id="description"
+                                    placeholder="Description"
+                                    value={task.description}
+                                />
+                            </FormGroup>
+                            <FormGroup style={{ display: "flex", justifyContent: "space-between" }}>
+                                <Label for="category" style={{ fontWeight: "bold" }}>Category:</Label>
+                                <select className="userEditDropdown" onChange={handleChange}>
+                                    {categories.map(category =>
+                                        category.id === task.categoryId ?
+                                            <option defaultValue="" selected value={category.id}>
+                                                {category.name}
+                                            </option> :
+                                            <option key={category.id} value={category.id}>
+                                                {category.name}
+                                            </option>
+                                    )}
+                                </select>
+                            </FormGroup>
                             <br />
-                            <Label for="category">Category</Label>
-                            <select className="userEditDropdown" onChange={handleChange}>
-                                {categories.map(category =>
-                                    category.id === task.categoryId ?
-                                        <option selected value={category.id}>
-                                            {category.name}
-                                        </option> :
-                                        <option key={category.id} value={category.id}>
-                                            {category.name}
-                                        </option>
-                                )}
-                            </select>
-                            <br />
-                            <Label for="description">Description</Label>
-                            <Input
-                                type="text"
-                                required
-                                onChange={handleFieldChange}
-                                id="description"
-                                placeholder="Description"
-                                value={task.description}
-                            />
-                            <br />
-                            <label></label>
-                            <div className="s">
-                                <Button
-                                    className="newPostSubmitButton"
-                                    type="submit"
-                                    disabled={isLoading}
-                                    onClick={createNewTask}
-                                >Submit</Button>
-                                <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
-                            </div>
+                        </fieldset>
+
+                        <hr />
+                        <div className="submit-cancel-buttons">
+                            <Button
+                                className="btn-red"
+                                type="submit"
+                                disabled={isLoading}
+                                onClick={createNewTask}
+                            >Submit</Button >
+                            <Link to={`/tasks`}><Button type="button" className="btn-blue">Cancel</Button></Link>
                         </div>
-                    </FormGroup>
-                </Form>
+                    </Form>
+
+                </div>
             </div>
         </>
     )

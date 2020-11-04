@@ -83,7 +83,7 @@ export default function TimerWithReset() {
 
     return (
         <div className="container">
-            <div class="time">
+            <div className="time">
                 <span className="minute">{minute}</span>
                 <span>:</span>
                 <span className="second">{second}</span>

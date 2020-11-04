@@ -24,7 +24,7 @@ export default function TaskList() {
                             {(JSON.parse(userProfile).displayName)}'s Task List
                         </h1>
                         <p>
-                            <Link class="btn-red" to="/tasks/add">New Task</Link>
+                            <Link className="btn-red" to="/tasks/add">New Task</Link>
                         </p>
                         <div>
                             {tasks.map(t =>
