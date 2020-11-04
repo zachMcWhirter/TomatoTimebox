@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import TaskCard from "./TaskCard";
 import { TaskContext } from "../../providers/TaskProvider";
 import { UserProfileContext } from "../../providers/UserProfileProvider";
 import { Link } from "react-router-dom";
-import TimerWithReset from "../Timer/Timer2"
 
 export default function TaskList() {
     const { tasks, getAllTasksForSingleUserId } = useContext(TaskContext);
@@ -16,13 +15,14 @@ export default function TaskList() {
     return (
         <>
             <div className="task-list-view">
+
                 <div className="task-container">
-
-
                     <section >
-                        <h1 className="task-list-h1">
-                            {(JSON.parse(userProfile).displayName)}'s Task List
-                        </h1>
+                        <div className="extra-box">
+                            <h1 className="task-list-h1">
+                                {(JSON.parse(userProfile).displayName)}'s Task List
+                            </h1>
+                        </div>
                         <p>
                             <Link className="btn-red" to="/tasks/add">New Task</Link>
                         </p>
@@ -33,10 +33,7 @@ export default function TaskList() {
                         </div>
                     </section>
                 </div>
-                <div className="TomatoTimebox-container">
-                    {/* <TomatoTimebox></TomatoTimebox> */}
-                    {/* <TimerWithReset></TimerWithReset> */}
-                </div>
+
             </div>
         </>
     );

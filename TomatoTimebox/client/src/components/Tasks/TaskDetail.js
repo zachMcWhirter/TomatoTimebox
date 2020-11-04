@@ -1,26 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
-import { UserProfileContext } from "../../providers/UserProfileProvider";
 
-import { Card, CardBody, Button, Label, Input } from "reactstrap";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { Button } from "reactstrap";
+import { useParams, Link } from "react-router-dom";
 
 export default function TaskDetail() {
     const { task, getTaskById } = useContext(TaskContext);
-    const { userProfile } = useContext(UserProfileContext);
     const { id } = useParams();
-    const history = useHistory();
 
     useEffect(() => {
         getTaskById(id)
-        // if (task.userProfileId != userProfile.id) {
-
-        // }
     }, []);
-
-    console.log(task.isFinished);
-    // console.log(userProfile.id);
-    console.log("task:", task);
 
     // we need the if statement to return true on the first render.
     // so we must include !task.userProfile because react will not let us
@@ -29,9 +19,6 @@ export default function TaskDetail() {
         return null
     }
 
-    console.log(task.isFinished);
-
-    console.log("task:", task);
     return (
         <>
             <div>
@@ -47,7 +34,6 @@ export default function TaskDetail() {
                             <h1 className="edit-task-h1">Task Details</h1>
                         </div>
                         <div className="task-edit">
-                            {/* <section > */}
                             <div className="task-details-container">
                                 <div className="h1-and-h3">
                                     <div>
