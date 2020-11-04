@@ -133,7 +133,7 @@ export default function TaskEditForm() {
                             </fieldset>
                         </Form>
                         <hr />
-                        <Button type="button" className="btn-red" onClick={e => { editTask() }}>Save</Button> &nbsp;&nbsp;
+                        <Button type="button" className="btn-red" onClick={e => { editTask() }}>Save</Button>
                                 <Link to={`/tasks`}><Button type="button" className="btn-blue">Cancel</Button></Link>
                     </div>
 

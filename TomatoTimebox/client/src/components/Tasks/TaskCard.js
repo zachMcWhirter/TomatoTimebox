@@ -21,7 +21,7 @@ export default function TaskCard({ task }) {
         // setChecked(!checked)
     };
 
-    
+
 
     return (
         <Card className="task-card">
