@@ -1,14 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { NoteContext } from "../../providers/NoteProvider";
 import { TaskContext } from "../../providers/TaskProvider";
-import { useHistory, Link, useParams } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { useHistory, Link } from "react-router-dom";
+import { Button, Form, Label, Input } from 'reactstrap';
 
 export default function NoteForm() {
     const { addNote } = useContext(NoteContext);
     const history = useHistory();
     const { task } = useContext(TaskContext);
-
 
     const [note, setNote] = useState({
         content: "",

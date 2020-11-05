@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Card, CardBody, Label, Input } from "reactstrap";
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { TaskContext } from "../../providers/TaskProvider";
 
 export default function TaskCard({ task }) {
-    const history = useHistory();
+
     const { toggleIsFinished } = useContext(TaskContext);
 
     const [checked, setChecked] = useState(task.isFinished)
@@ -20,8 +20,6 @@ export default function TaskCard({ task }) {
         // toggleIsFinished(task.id, !checked)
         // setChecked(!checked)
     };
-
-
 
     return (
         <Card className="task-card">

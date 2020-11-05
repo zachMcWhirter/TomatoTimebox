@@ -54,7 +54,6 @@ export default function TaskForm() {
     return (
         <>
             <div className="extra-box">
-                {/* <div className="add-task-form-container"> */}
                 <Form className="task-edit">
                     <div>
                         <h1 className="add-task-h1">Create a New Task</h1>
@@ -98,7 +97,6 @@ export default function TaskForm() {
                         </FormGroup>
                         <br />
                     </fieldset>
-
                     <hr />
                     <div className="submit-cancel-buttons">
                         <Button
@@ -117,8 +115,6 @@ export default function TaskForm() {
                         </Link>
                     </div>
                 </Form>
-
-                {/* </div> */}
             </div>
         </>
     )

@@ -15,7 +15,6 @@ export default function TaskList() {
     return (
         <>
             <div className="task-list-view">
-
                 <div className="task-container">
                     <section >
                         <div className="extra-box">
@@ -33,7 +32,6 @@ export default function TaskList() {
                         </div>
                     </section>
                 </div>
-
             </div>
         </>
     );

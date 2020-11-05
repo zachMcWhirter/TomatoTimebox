@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./Timer.css";
-import { TargetTimeContext, TargetTimeProvider } from "./TargetTimeProvider";
+import { TargetTimeContext } from "./TargetTimeProvider";
 
 //set minutes and seconds to desired default value
 export default function TimerWithReset() {
@@ -10,11 +10,10 @@ export default function TimerWithReset() {
     // when the page renders, the timer will not start until the
     // user clicks the start button
 
-    const { targetTime, setTargetTime, pauseTimer,
+    const { targetTime, pauseTimer,
         restartTimer, pauseAt, isActive, msRemaining } = useContext(TargetTimeContext)
 
     const [targetDate, setTargetDate] = useState(targetTime)
-    // const [counter, setCounter] = useState(1500);
 
     const counter = () => {
         if (!isActive()) {

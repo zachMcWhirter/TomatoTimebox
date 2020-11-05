@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { NoteContext } from "../../providers/NoteProvider";
 import { TaskContext } from "../../providers/TaskProvider";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function NoteEditForm() {
     const { getNoteById, updateNote, note } = useContext(NoteContext);
@@ -45,7 +45,6 @@ export default function NoteEditForm() {
         setEditedNote(stateToChange);
     };
 
-
     if (!editedNote) {
         return null
     }
@@ -74,7 +73,6 @@ export default function NoteEditForm() {
                                         value={note.taskId}
                                     />
                                 </FormGroup>
-
                                 <Label for="content" style={{ fontWeight: "bold" }}>Content</Label>
                                 <Input
                                     type="textarea"

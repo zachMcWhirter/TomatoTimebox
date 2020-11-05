@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
 
 import { Button } from "reactstrap";
@@ -28,7 +28,6 @@ export default function TaskDetail() {
             </div>
             <div className="delete-body">
                 <div className="task-edit-container">
-
                     <div>
                         <div className="edit-task-h1-container">
                             <h1 className="edit-task-h1">Task Details</h1>

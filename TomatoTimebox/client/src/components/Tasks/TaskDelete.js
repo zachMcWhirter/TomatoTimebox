@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 export default function TaskDeletePage() {
 

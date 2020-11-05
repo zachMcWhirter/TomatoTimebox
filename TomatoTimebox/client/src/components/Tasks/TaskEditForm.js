@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { TaskContext } from "../../providers/TaskProvider";
 import { CategoryContext } from "../../providers/CategoryProvider";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function TaskEditForm() {
     const { getTaskById, updateTask, task } = useContext(TaskContext);
@@ -13,7 +13,8 @@ export default function TaskEditForm() {
     const { id } = useParams();
     const history = useHistory();
 
-    // check for bug
+    // check back here for bug when you add new components
+    // to expand the app's functionality
     const [editedTask, setEditedTask] = useState({
         name: "",
         description: "",

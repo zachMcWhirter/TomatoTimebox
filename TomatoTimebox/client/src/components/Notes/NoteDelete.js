@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { NoteContext } from "../../providers/NoteProvider";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { Button } from "reactstrap";
@@ -12,8 +12,6 @@ export default function NoteDeletePage() {
     useEffect(() => {
         getNoteById(id)
     }, [])
-
-
 
     const deleteThisNote = () => {
         deleteNote(parseInt(id))

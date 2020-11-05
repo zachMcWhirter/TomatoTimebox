@@ -18,9 +18,9 @@ export default function NoteList() {
 
     return (
         <section>
-                        <Link style={{ textDecoration: 'none' }} to={`/tasks/details/${task.id}`}>
-                            <button className="custom-btn">&#x2190; Back to {task.name}</button>
-                        </Link>
+            <Link style={{ textDecoration: 'none' }} to={`/tasks/details/${task.id}`}>
+                <button className="custom-btn">&#x2190; Back to {task.name}</button>
+            </Link>
             <div className="extra-box">
                 <Card className="task-edit-container">
                     <h1 className="noteList-h1">
