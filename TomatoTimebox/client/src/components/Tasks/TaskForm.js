@@ -56,9 +56,9 @@ export default function TaskForm() {
             <div className="extra-box">
                 {/* <div className="add-task-form-container"> */}
                 <Form className="task-edit">
-                <div>
-                    <h1 className="add-task-h1">Create a New Task</h1>
-                </div>
+                    <div>
+                        <h1 className="add-task-h1">Create a New Task</h1>
+                    </div>
                     <fieldset className="add-task">
                         <FormGroup style={{ display: "flex", justifyContent: "space-between" }}>
                             <Label for="name" style={{ fontWeight: "bold" }}>Name:</Label>
@@ -106,8 +106,15 @@ export default function TaskForm() {
                             type="submit"
                             disabled={isLoading}
                             onClick={createNewTask}
-                        >Submit</Button >
-                        <Link to={`/tasks`}><Button type="button" className="btn-blue">Cancel</Button></Link>
+                        >Submit
+                        </Button >
+                        <Link to={`/tasks`}>
+                            <Button
+                                type="button"
+                                className="btn-blue"
+                            >Cancel
+                            </Button>
+                        </Link>
                     </div>
                 </Form>
 

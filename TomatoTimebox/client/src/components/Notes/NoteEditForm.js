@@ -52,38 +52,58 @@ export default function NoteEditForm() {
 
     return (
         <>
-            <div className="post-container">
-                <CardBody>
-                    <Form>
-                        <FormGroup>
-                            <Input
-                                id={editedNote.id}
-                                onChange={handleFieldChange}
-                                type="hidden"
-                                value={note.id}
-                            />
-                            <Input
-                                id={editedNote.taskId}
-                                onChange={handleFieldChange}
-                                type="hidden"
-                                value={note.taskId}
-                            />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="content">Content</Label>
-                            <Input
-                                type="text"
-                                id="content"
-                                required
-                                defaultValue={editedNote.content}
-                                name="content"
-                                onChange={handleFieldChange}
-                            />
-                        </FormGroup>
-                    </Form>
-                    <Button type="button" color="success" className="btn-red" onClick={e => { editNote() }}>Save</Button> &nbsp;&nbsp;
-                                <Link to={`/tasks`}><Button type="button" color="warning">Cancel</Button></Link>
-                </CardBody>
+            <div className="delete-body">
+                <div className="task-edit-container">
+                    <div>
+                        <h1 className="add-task-h1">Edit Note</h1>
+                    </div>
+                    <div className="task-edit">
+                        <Form>
+                            <fieldset className="add-task">
+                                <FormGroup>
+                                    <Input
+                                        id={editedNote.id}
+                                        onChange={handleFieldChange}
+                                        type="hidden"
+                                        value={note.id}
+                                    />
+                                    <Input
+                                        id={editedNote.taskId}
+                                        onChange={handleFieldChange}
+                                        type="hidden"
+                                        value={note.taskId}
+                                    />
+                                </FormGroup>
+
+                                <Label for="content" style={{ fontWeight: "bold" }}>Content</Label>
+                                <Input
+                                    type="textarea"
+                                    id="content"
+                                    maxlength="200"
+                                    required
+                                    defaultValue={editedNote.content}
+                                    name="content"
+                                    onChange={handleFieldChange}
+                                />
+                            </fieldset>
+                        </Form>
+                        <hr />
+                        <Button
+                            className="btn-red"
+                            type="submit"
+                            onClick={e => { editNote() }}
+                        >Save
+                        </Button>
+                        <Link to={`/notesbytask/${note.taskId}`}>
+                            <Button
+                                type="button"
+                                className="btn-blue"
+                            >Cancel
+                            </Button>
+                        </Link>
+                    </div>
+
+                </div>
             </div>
         </>
     );

@@ -125,17 +125,14 @@ html {
 
 .delete-confirm-container {
     display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-    /* width: 35vw; */
-    border: 1px solid #010014;
+    flex-direction: column; 
     border-radius: 12px;
     padding-left: 20px;
     padding-right: 20px;   
-    box-shadow: 1px 1px 2px 1px #747272;
-    background: rgba(113, 114, 141, 0.659);
+    /* box-shadow: 1px 1px 2px 1px #747272; */
+    background: rgba(113, 114, 141, 0.859);
     margin-top: 10px;
-    align-items: center;  
+    align-items: center;
 }
 
 /* .post-container {
@@ -314,6 +311,10 @@ Form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+h1.delete-task-h1 {
+    font-size: 28px;
 }
 
 .nav-items {

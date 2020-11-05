@@ -34,9 +34,8 @@ export default function TaskDeletePage() {
                         <div className="actionBtns">
                             <div className="form-group">
                                 <hr />
-                                <input type="submit" onClick={deleteThisTask} value="Confirm" className="btn-red" />&nbsp;&nbsp;|&nbsp;&nbsp;
-                                <Link to={`/tasks`}>
-                                    Cancel
+                                <input type="submit" onClick={deleteThisTask} value="Confirm" className="btn-red" />
+                                <Link to={`/tasks`}><Button type="button" className="btn-blue">Cancel</Button>
                                 </Link>
                             </div>
                         </div>

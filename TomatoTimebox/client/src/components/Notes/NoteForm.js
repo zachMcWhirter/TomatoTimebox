@@ -44,7 +44,7 @@ export default function NoteForm() {
                         <h1 className="add-task-h1">Create a New Note</h1>
                     </div>
                     <fieldset className="add-task">
-                        <Label className for="content" style={{ fontWeight: "bold" }}>Content</Label>
+                        <Label for="content" style={{ fontWeight: "bold" }}>Content</Label>
                         <Input
                             type="textarea"
                             maxlength="200"

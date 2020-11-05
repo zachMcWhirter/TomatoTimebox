@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { NoteContext } from "../../providers/NoteProvider";
 import { useHistory, useParams, Link } from "react-router-dom";
+import { Button } from "reactstrap";
 
 export default function NoteDeletePage() {
 
@@ -25,22 +26,24 @@ export default function NoteDeletePage() {
 
     return (
         <>
-            <main className="postContainer">
-                <section className="post">
-                    <h4> Delete this Note: "{note.content}"?</h4>
-                    <hr />
-                    <div className="row">
+            <div className="delete-body">
+                <div className="delete-confirm-container">
+                    <h3> Delete this Note: ?</h3>
+                    <div className="delete-task">
+                        <div>
+                            <h1 className="delete-task-h1">{note.content}</h1>
+                        </div>
                         <div className="actionBtns">
                             <div className="form-group">
-                                <input type="submit" onClick={deleteThisNote} value="Confirm" className="btn-red" />&nbsp;&nbsp;|&nbsp;&nbsp;
-                                <Link to={`/tasks`}>
-                                    Cancel
+                                <hr />
+                                <input type="submit" onClick={deleteThisNote} value="Confirm" className="btn-red" />
+                                <Link to={`/notesbytask/${note.taskId}`}><Button type="button" className="btn-blue">Cancel</Button>
                                 </Link>
                             </div>
                         </div>
                     </div>
-                </section>
-            </main>
+                </div>
+            </div>
         </>
     );
 }
