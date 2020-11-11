@@ -1,16 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TaskCard from "./TaskCard";
 import { TaskContext } from "../../providers/TaskProvider";
 import { UserProfileContext } from "../../providers/UserProfileProvider";
 import { Link } from "react-router-dom";
 
 export default function TaskList() {
-    const { tasks, getAllTasksForSingleUserId } = useContext(TaskContext);
+    const { tasks, getAllTasksForSingleUserId, taskUpdated, setTaskUpdated } = useContext(TaskContext);
     const { userProfile } = useContext(UserProfileContext);
+
 
     useEffect(() => {
         getAllTasksForSingleUserId(JSON.parse(userProfile).id);
-    }, []);
+    }, [taskUpdated]);
 
     return (
         <>
@@ -27,7 +28,8 @@ export default function TaskList() {
                         </p>
                         <div>
                             {tasks.map(t =>
-                                <TaskCard key={t.id} task={t} />
+                                <TaskCard key={t.id} task={t}
+                                />
                             )}
                         </div>
                     </section>

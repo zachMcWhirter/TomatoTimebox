@@ -10,6 +10,7 @@ export const TaskProvider = (props) => {
     const [task, setTask] = useState({});
     const [notes, setNotes] = useState([]);
     const [note, setNote] = useState({});
+    const [taskUpdated, setTaskUpdated] = useState(false);
 
     //Get all Tasks for all Users (for testing purposes)
     const getAllTasks = () => {
@@ -100,7 +101,7 @@ export const TaskProvider = (props) => {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
                 },
-            }))
+            })).then(setTaskUpdated(!taskUpdated))
     };
 
     // Delete a Task
@@ -136,7 +137,8 @@ export const TaskProvider = (props) => {
             getAllTasksForSingleUserId, notes, setNotes,
             note, setNote, getTaskById, addTask, deleteTask,
             updateTask, getAllNotesForSingleTaskId,
-            toggleIsFinished, getUserSpecificTaskById
+            toggleIsFinished, getUserSpecificTaskById,
+            taskUpdated, setTaskUpdated
 
         }}>
             {props.children}
