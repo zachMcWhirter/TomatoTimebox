@@ -16,9 +16,6 @@ namespace TomatoTimebox.Controllers
     {
         private readonly ITaskRepository _taskRepository;
 
-        //services.AddTransient<INoteRepository, NoteRepository>();
-
-
         public TaskController(ITaskRepository taskRepository)
 
         {
@@ -132,6 +129,5 @@ namespace TomatoTimebox.Controllers
             }
             return Ok(task);
         }
-
     }
 }

@@ -16,7 +16,6 @@ namespace TomatoTimebox.Repositories
         // Helper method that defines the new object and stores it in  
         // the NewTaskFromReader variable.
         private Task NewTaskFromReader(SqlDataReader reader)
-
         {
             return new Task()
             {
@@ -243,7 +242,6 @@ namespace TomatoTimebox.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-
         }
 
         // Get all Tasks with their Notes
@@ -359,7 +357,6 @@ namespace TomatoTimebox.Repositories
                                 CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTimeForNote")
                             });
                         }
-
                     }
                    
                     reader.Close();
@@ -539,6 +536,5 @@ namespace TomatoTimebox.Repositories
                 }
             }
         }
-
     }
 }

@@ -64,7 +64,6 @@ export default function TimerWithReset() {
     }, [isActive]);
 
     const handlePausePress = () => {
-
         if (isActive()) {
             pauseTimer()
         } else {
