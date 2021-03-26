@@ -15,7 +15,6 @@ import NoteDeletePage from "../components/Notes/NoteDelete";
 import NoteEditForm from "../components/Notes/NoteEditForm";
 
 
-
 export default function ApplicationViews() {
     const { isLoggedIn } = useContext(UserProfileContext);
 

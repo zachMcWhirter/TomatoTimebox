@@ -22,6 +22,10 @@ export default function TaskEditForm() {
         isFinished: task.isFinished,
         userProfileId: task.userProfileId
     });
+
+    console.log("id: ", id)
+    console.log("parsed-id: ", parseInt(id))
+
     console.log(editedTask, "EDITED taSK")
     const handleChange = (e) => {
         setCategoryId(e.target.value);

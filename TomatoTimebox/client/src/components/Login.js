@@ -19,7 +19,7 @@ export default function Login() {
 
     return (
         <>
-            <Form classname="login-register" onSubmit={loginSubmit}>
+            <Form className="login-register" onSubmit={loginSubmit}>
                 <div>
                     <fieldset >
                         <FormGroup style={{ display: "flex", justifyContent: "space-between" }}>
