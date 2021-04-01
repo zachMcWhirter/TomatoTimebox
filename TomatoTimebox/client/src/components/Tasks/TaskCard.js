@@ -5,25 +5,14 @@ import { TaskContext } from "../../providers/TaskProvider";
 
 export default function TaskCard({ task }) {
 
-    const { toggleIsFinished, setTaskUpdated, taskUpdated } = useContext(TaskContext);
+    const { toggleIsFinished } = useContext(TaskContext);
 
     const [checked, setChecked] = useState(task.isFinished)
     const isChecked = e => {
-        // e.preventDefault();
-        // if (checked == false) {
-        //     toggleIsFinished(task.id, true)
-        //     setChecked(true)
-
-        // } else {
-        //     toggleIsFinished(task.id, false)
-        //     setChecked(false)
-        // }
-        //// Alternative solution (that also works) using code that is more condensed ////
+        e.preventDefault();
         toggleIsFinished(task.id, !checked)
         setChecked(!checked)
-        
     };
-
 
     return (
         <Card className="task-card">
