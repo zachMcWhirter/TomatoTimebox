@@ -27,8 +27,6 @@ namespace TomatoTimebox.Repositories
                         FROM Category 
                         ORDER BY Name";
 
-                        
-
                     var reader = cmd.ExecuteReader();
                     var categories = new List<Category>();
                     while (reader.Read())
@@ -105,8 +103,6 @@ namespace TomatoTimebox.Repositories
                 }
             }
         }
-
-
 
         // Edit a Category
         public void EditCategory(Category category)
